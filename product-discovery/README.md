@@ -1,9 +1,10 @@
-<a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](./images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
+<a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](../images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
 
 # Crownpeak Best Practices
 This document is provided to assist with the deployment of Crownpeak Products and Services into the wider customer experience architecture.
 
-
+## Product Discovery (Fredhopper & Experience Orchestrator)
+ * [Fredhopper & Salesforce Commerce Cloud Reference Architecture](./fhr-salesforce-commerce-cloud/README.md)
 
 
 ##  Legal Notices
