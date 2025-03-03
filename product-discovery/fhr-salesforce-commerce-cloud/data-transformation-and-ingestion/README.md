@@ -43,28 +43,44 @@ The Common Item Data Pipeline (API) provides a more real-time and flexible metho
 * **API Error Codes:** Handle API error codes and implement retry mechanisms.
 * **Logging:** Log API requests and responses for monitoring and troubleshooting.
 
-### Code Snippets for API Calls (e.g., cURL, Python)
+### Code Snippets for API Calls (e.g., cURL, Node)
 * **cURL Example:**
 ```bash
 curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer YOUR_API_KEY" -d '{"items": [{"id": "12345", "name": "Product Name", "price": 99.99, "category": "Electronics"}]}' "YOUR_FREDHOPPER_API_ENDPOINT"
 ```
 
-* **Python Example:**
-```python
-import requests
-import json
+* **Node Example:**
+```node
+const axios = require('axios');
 
-api_key = "YOUR_API_KEY"
-api_endpoint = "YOUR_FREDHOPPER_API_ENDPOINT"
-data = {"items": [{"id": "12345", "name": "Product Name", "price": 99.99, "category": "Electronics"}]}
-headers = {"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
+async function ingestData(apiKey, apiEndpoint, data) {
+    try {
+        const response = await axios.post(apiEndpoint, data, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${apiKey}`,
+            },
+        });
 
-response = requests.post(api_endpoint, headers=headers, data=json.dumps(data))
+        if (response.status === 200) {
+            console.log('Data ingested successfully');
+        } else {
+            console.error(`Error ingesting data: ${response.status}, ${response.data}`);
+        }
+    } catch (error) {
+        console.error('Error ingesting data:', error);
+    }
+}
 
-if response.status_code == 200:
-    print("Data ingested successfully")
-else:
-    print(f"Error ingesting data: {response.status_code}, {response.text}")
+const apiKey = 'YOUR_API_KEY';
+const apiEndpoint = 'YOUR_FREDHOPPER_API_ENDPOINT';
+const data = {
+    items: [
+        { id: '12345', name: 'Product Name', price: 99.99, category: 'Electronics' },
+    ],
+};
+
+ingestData(apiKey, apiEndpoint, data);
 ```
 
 ### Troubleshooting API Ingestion
@@ -81,30 +97,45 @@ Flat file ingestion is a traditional method of transferring data from SFCC to Fr
 * **Scheduled Exports:** Schedule regular data exports to keep Fredhopper data synchronized with SFCC.
 
 ### Data Transformation (Example Scripts/Snippets)
-* **Scripting Languages:** Use scripting languages like Python or shell scripting to transform the extracted data into the format required by Fredhopper.
+* **Scripting Languages:** Use scripting languages like Python, Node or shell scripting to transform the extracted data into the format required by Fredhopper.
 * **Data Mapping:** Map SFCC data fields to the corresponding Fredhopper attributes.
 * **Data Cleansing:** Clean and validate the data to ensure accuracy and consistency.
-* **Example Python Script Snippet:**
+* **Node Example:**
+```node
+const fs = require('fs');
+const csv = require('csv-parser');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-```python
-import csv
+async function transformData(inputFile, outputFile) {
+    const results = [];
 
-def transform_data(input_file, output_file):
-    with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outfile:
-        reader = csv.DictReader(infile)
-        writer = csv.DictWriter(outfile, fieldnames=['id', 'name', 'price', 'category'])
-        writer.writeheader()
-        for row in reader:
-            # Perform data transformations here
-            transformed_row = {
-                'id': row['product_id'],
-                'name': row['product_name'],
-                'price': row['product_price'],
-                'category': row['product_category']
-            }
-            writer.writerow(transformed_row)
+    fs.createReadStream(inputFile)
+        .pipe(csv())
+        .on('data', (data) => {
+            results.push({
+                id: data.product_id,
+                name: data.product_name,
+                price: data.product_price,
+                category: data.product_category,
+            });
+        })
+        .on('end', async () => {
+            const csvWriter = createCsvWriter({
+                path: outputFile,
+                header: [
+                    { id: 'id', title: 'id' },
+                    { id: 'name', title: 'name' },
+                    { id: 'price', title: 'price' },
+                    { id: 'category', title: 'category' },
+                ],
+            });
 
-transform_data('input.csv', 'output.csv')
+            await csvWriter.writeRecords(results);
+            console.log('Data transformation complete.');
+        });
+}
+
+transformData('input.csv', 'output.csv');
 ```
 
 ### File Structure and Schema

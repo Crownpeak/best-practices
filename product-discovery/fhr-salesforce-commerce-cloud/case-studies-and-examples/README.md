@@ -23,36 +23,33 @@ This section showcases real-world examples and practical code samples to demonst
 
 ## Code Samples and Configuration Snippets
 
-* **Example 1: Python Script for API Ingestion**
+* **Example 1: Node for API Ingestion**
 
-```python
-import requests
-import json
+```node
+const axios = require('axios');
 
-api_key = "YOUR_API_KEY"
-api_endpoint = "YOUR_FREDHOPPER_API_ENDPOINT"
+async function searchProducts(apiUrl, query) {
+  const requestBody = {
+    query: query,
+    start: 0,
+    rows: 20,
+  };
 
-def send_product_update(product_data):
-    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
-    response = requests.post(api_endpoint, headers=headers, data=json.dumps(product_data))
-    if response.status_code == 200:
-        print(f"Product update successful: {product_data['items'][0]['id']}")
-    else:
-        print(f"Product update failed: {response.status_code}, {response.text}")
+  try {
+    const response = await axios.post(apiUrl, requestBody, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-product_data = {
-    "items": [
-        {
-            "id": "7890",
-            "name": "Wireless Headphones",
-            "price": 149.99,
-            "category": "Electronics"
-        }
-    ]
+    console.log(response.data); // Process and display the search results
+  } catch (error) {
+    console.error('Error fetching search results:', error);
+  }
 }
 
-send_product_update(product_data)
-
+const apiUrl = 'YOUR_FREDHOPPER_QUERY_API_ENDPOINT';
+searchProducts(apiUrl, 'laptop');
 ```
 
 * **Example 2: JavaScript Code for Query API Integration**
