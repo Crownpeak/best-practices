@@ -1,6 +1,6 @@
 <a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](../../../images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
 
-## [Fredhopper & Salesforce Commerce Cloud Reference Architecture Guide](../README.md)
+## [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../README.md)
 
 # Deployment and Operational Considerations
 This section addresses the essential aspects of deploying and operating your Fredhopper and Salesforce Commerce Cloud (SFCC) integration. A well-planned deployment strategy and robust operational procedures are crucial for ensuring the stability, reliability, and performance of your e-commerce search and navigation solution.
@@ -35,7 +35,7 @@ Implement comprehensive monitoring and logging to track the health and performan
 Establish disaster recovery and backup procedures to ensure business continuity.
 
 * **Backup:**
-    * Regularly back up SFCC and Fredhopper data and configurations.
+    * Regularly back up data and configurations.
     * Store backups in a secure and redundant location.
     * Test backup restoration procedures.
 * **Disaster Recovery:**

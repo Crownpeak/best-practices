@@ -1,6 +1,6 @@
 <a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](../../../images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
 
-## [Fredhopper & Salesforce Commerce Cloud Reference Architecture Guide](../README.md)
+## [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../README.md)
 
 # Case Studies and Examples
 This section showcases real-world examples and practical code samples to demonstrate the successful integration of Fredhopper with Salesforce Commerce Cloud (SFCC). These examples provide valuable insights and practical guidance for implementing the best practices outlined in this guide.
@@ -23,7 +23,7 @@ This section showcases real-world examples and practical code samples to demonst
 
 ## Code Samples and Configuration Snippets
 
-* **Example 1: Node for API Ingestion**
+* **Example 1: Node for Query API Integration**
 
 ```node
 const axios = require('axios');
@@ -83,21 +83,6 @@ async function searchProducts(query) {
 searchProducts("laptop");
 
 ```
-
-* **Example 3: Fredhopper Configuration Snippet (Facet Configuration)**
-
-```xml
-<facet field="category">
-  <display-name>Category</display-name>
-  <limit>10</limit>
-</facet>
-
-<facet field="brand">
-  <display-name>Brand</display-name>
-  <limit>5</limit>
-</facet>
-```
-
 These examples demonstrate how to apply the principles and techniques discussed in this guide. By leveraging these real-world scenarios and code snippets, you can accelerate your Fredhopper and SFCC integration and deliver a superior e-commerce experience.
 
 

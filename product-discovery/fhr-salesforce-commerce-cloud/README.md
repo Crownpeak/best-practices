@@ -1,6 +1,6 @@
 <a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](../../images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
 
-# [Fredhopper & Salesforce Commerce Cloud Reference Architecture Guide](./README.md)
+# [Fredhopper & Salesforce Commerce Cloud Reference Architecture](./README.md)
 
 This guide provides best practices for integrating Fredhopper with Salesforce Commerce Cloud (SFCC), covering architectural principles, data ingestion, and storefront integration.
 

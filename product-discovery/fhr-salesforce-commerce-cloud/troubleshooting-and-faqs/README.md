@@ -1,6 +1,6 @@
 <a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](../../../images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
 
-## [Fredhopper & Salesforce Commerce Cloud Reference Architecture Guide](../README.md)
+## [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../README.md)
 
 # Troubleshooting and FAQs
 This section addresses common issues and frequently asked questions related to integrating Fredhopper with Salesforce Commerce Cloud (SFCC). It provides practical solutions and guidance for resolving potential problems.

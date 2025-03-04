@@ -1,6 +1,6 @@
 <a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](../../../images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
 
-## [Fredhopper & Salesforce Commerce Cloud Reference Architecture Guide](../README.md)
+## [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../README.md)
 
 # Introduction
 
@@ -42,9 +42,7 @@ This guide assumes that readers have a foundational understanding of the followi
     * Proficiency in web development concepts (HTML, CSS, JavaScript).
     * Familiarity with RESTful APIs and JSON data format.
 * **Data Transformation:**
-    * Basic understanding of data transformation concepts and scripting languages (e.g., Python, shell scripting).
-* **Version Control:**
-    * Familiarity with Git and GitHub.
+    * Basic understanding of data transformation concepts and scripting languages
 
 **Prerequisites:**
 

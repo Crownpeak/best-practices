@@ -1,6 +1,6 @@
 <a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](../../../images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
 
-## [Fredhopper & Salesforce Commerce Cloud Reference Architecture Guide](../README.md)
+## [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../README.md)
 
 # Data Transformation and Ingestion
 
@@ -23,16 +23,18 @@ The Common Item Data Pipeline (API) provides a more real-time and flexible metho
 * **Example JSON Payload:**
 
 ```json
-{
-  "items": [
-    {
-      "id": "12345",
-      "name": "Product Name",
-      "price": 99.99,
-      "category": "Electronics"
+[
+  {
+    "id": "A0001",
+    "catalogVersion": 1,
+    "type": "product",
+    "attributes": {
+      "title": "My item",
+      "description": "This is my item.",
+      "categories": [ "category_id_1","category_id_2"]
     }
-  ]
-}
+  }
+]
 ```
 
 ### Real-time vs. Batch Updates
@@ -46,7 +48,7 @@ The Common Item Data Pipeline (API) provides a more real-time and flexible metho
 ### Code Snippets for API Calls (e.g., cURL, Node)
 * **cURL Example:**
 ```bash
-curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer YOUR_API_KEY" -d '{"items": [{"id": "12345", "name": "Product Name", "price": 99.99, "category": "Electronics"}]}' "YOUR_FREDHOPPER_API_ENDPOINT"
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer YOUR_API_KEY" -d '{"items": [{ "id": "A0001",  "catalogVersion": 1, "type": "product",  "attributes": {  "title": "My item", "description": "This is my item.", "categories": [ "category_id_1","category_id_2"] } }]}' "YOUR_FREDHOPPER_API_ENDPOINT"
 ```
 
 * **Node Example:**
@@ -76,7 +78,7 @@ const apiKey = 'YOUR_API_KEY';
 const apiEndpoint = 'YOUR_FREDHOPPER_API_ENDPOINT';
 const data = {
     items: [
-        { id: '12345', name: 'Product Name', price: 99.99, category: 'Electronics' },
+        { "id": "A0001", "catalogVersion": 1, "type": "product",  "attributes": {  "title": "My item", "description": "This is my item.", "categories": [ "category_id_1","category_id_2"] } },
     ],
 };
 
@@ -87,6 +89,8 @@ ingestData(apiKey, apiEndpoint, data);
 * **Authentication Errors:** Verify API keys and tokens.
 * **Data Format Errors:** Check the JSON payload for errors.
 * **API Rate Limits:** Monitor API rate limits and implement retry mechanisms.
+
+For more details on using the [CIDP Items API](https://crownpeak.gitbook.io/product-discovery/product-discovery-developer-guide/item-catalog-management/what-is-the-items-api), see the documentation.
 
 ## Flat File Ingestion
 Flat file ingestion is a traditional method of transferring data from SFCC to Fredhopper. It involves exporting data from SFCC into flat files (e.g., CSV, XML) and then uploading these files to Fredhopper for indexing.
@@ -140,7 +144,7 @@ transformData('input.csv', 'output.csv');
 
 ### File Structure and Schema
 * **Fredhopper Schema:** Define the schema for your Fredhopper data, including the attributes and data types.
-* **File Format:** Ensure the flat files are in the correct format (e.g., CSV, XML) and adhere to the Fredhopper schema.
+* **File Format:** Ensure the flat files are in the correct format (e.g., CSV, JSON) and adhere to the Fredhopper schema.
 
 ### Upload Process to Fredhopper
 * **Fredhopper Admin Interface:** Use the Fredhopper admin interface to upload the flat files.
@@ -151,6 +155,7 @@ transformData('input.csv', 'output.csv');
 * **Data Mapping Issues:** Verify that the data is correctly mapped to Fredhopper attributes.
 * **Upload Failures:** Investigate upload failures and check Fredhopper logs for errors.
 
+For more details on using [Flat File Ingestion](https://crownpeak.gitbook.io/product-discovery/fredhopper-integration-guide/fredhopper-integration-guide-1/data-integration), see the documentation.
 
 ## Data Synchronization Strategies
 Maintaining data consistency between SFCC and Fredhopper is crucial for accurate search and navigation.

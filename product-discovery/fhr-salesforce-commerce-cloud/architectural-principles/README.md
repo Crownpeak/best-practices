@@ -1,13 +1,13 @@
 <a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](../../../images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
 
-## [Fredhopper & Salesforce Commerce Cloud Reference Architecture Guide](../README.md)
+## [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../README.md)
 
 # Architectural Principles
 This section outlines the fundamental architectural principles for integrating Fredhopper with Salesforce Commerce Cloud (SFCC). A well-defined architecture is crucial for ensuring a scalable, performant, and maintainable integration. We'll explore the high-level system overview, key component interactions, and essential considerations for security and performance.
 
-Understanding these principles will provide a solid foundation for the subsequent sections, where we delve into the specifics of data ingestion and storefront integration. By adhering to these guidelines, you can build a robust and efficient e-commerce search and navigation solution that leverages the strengths of both Fredhopper and SFCC.
+Understanding these principles will provide a solid foundation for the subsequent sections, where we delve into the specifics of data ingestion and storefront integration. By adhering to these guidelines, you can build a robust and efficient solution that leverages the strengths of both Fredhopper and SFCC.
 
-## High-Level Architecture Overview (Diagram)
+## High-Level Architecture Overview
 The following diagram shows a high-level typical architecture deployment of Fredhopper & SFCC. While each customer's implementation will vary, this can be used as a general starting point for implementation discussion.
 
 ![Fredhopper + Salesforce Commerce Cloud (SFCC) High-Level Architecture Diagram](../../../images/diagrams/product-discovery_fhr-salesforce-commerce-cloud_architectural-principles_fhr-sfcc-high-level-architecure.png "Crownpeak Logo")
@@ -49,7 +49,7 @@ When integrating Fredhopper with Salesforce Commerce Cloud (SFCC), scalability a
 **3. Infrastructure and Resource Management:**
 * **Scalable Infrastructure:** Design your infrastructure to scale horizontally to handle increasing traffic and data volume.
 * **Resource Monitoring:** Implement comprehensive monitoring of system resources (CPU, memory, network) to identify bottlenecks and performance issues.
-* **Database Optimization:** If SFCC or Fredhopper relies on databases, optimize database performance through indexing, query optimization, and proper resource allocation.
+* **Database Optimization:** Optimize database performance through indexing, query optimization, and proper resource allocation.
 * **CDN Usage:** Utilize a Content Delivery Network (CDN) to cache static assets and reduce latency for storefront requests.
 
 **4. Code Optimization:**
@@ -62,7 +62,6 @@ When integrating Fredhopper with Salesforce Commerce Cloud (SFCC), scalability a
 * **Facet Optimization:** Optimize facet configurations to minimize the number of facet values returned, especially for large catalogs.
 
 By carefully considering these scalability and performance aspects, you can build a robust and efficient Fredhopper and SFCC integration that delivers a superior customer experience.
-
 
 ## Security Best Practices
 Security is a critical consideration when integrating Fredhopper with Salesforce Commerce Cloud (SFCC). Protecting sensitive data and ensuring secure communication is essential for maintaining customer trust and preventing security breaches. Here's a breakdown of key security best practices:
@@ -102,17 +101,9 @@ Security is a critical consideration when integrating Fredhopper with Salesforce
 * **Secure Cookies:**
     * Use secure and HTTP-only cookies to protect session information.
 * **Regular Security Updates:**
-    * Keep SFCC, Fredhopper, and all related software components up to date with the latest security patches.
+    * Keep all software components up to date with the latest security patches.
 
-**4. Fredhopper Specific Security:**
-* **Access Control Lists (ACLs):**
-    * Use Fredhopper's ACLs to restrict access to sensitive data and configurations.
-* **Secure Configuration:**
-    * Follow Fredhopper's security best practices for configuration.
-* **Environment Isolation:**
-    * Isolate Development, Staging, and Production Fredhopper environments.
-
-**5. SFCC Specific Security:**
+**4. SFCC Specific Security:**
 * **OCAPI Security:**
     * Follow Salesforce best practices for OCAPI security.
 * **SFCC Roles and Permissions:**

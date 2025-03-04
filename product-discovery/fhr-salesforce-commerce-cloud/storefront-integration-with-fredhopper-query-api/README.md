@@ -1,6 +1,6 @@
 <a href="http://www.crownpeak.com" target="_blank">![Crownpeak Logo](../../../images/logo/crownpeak-logo.png "Crownpeak Logo")</a>
 
-## [Fredhopper & Salesforce Commerce Cloud Reference Architecture Guide](../README.md)
+## [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../README.md)
 
 # Storefront Integration with Fredhopper Query API
 This section focuses on integrating the Fredhopper Query API into your storefront to provide enhanced search, navigation, and personalization capabilities. We'll cover the essential aspects of implementing the API, from constructing queries to handling responses and optimizing performance.
@@ -11,32 +11,11 @@ The Fredhopper Query API is a RESTful interface that allows your storefront to c
 
 ## Implementing Search and Navigation
 
-### Request Structure (JSON Examples)
-The Query API uses JSON for request and response payloads. Here's an example of a search request:
-```json
-{
-  "query": "t-shirt",
-  "filters": [
-    {
-      "field": "category",
-      "values": ["Men's Clothing"]
-    }
-  ],
-  "sort": [
-    {
-      "field": "price",
-      "direction": "asc"
-    }
-  ],
-  "start": 0,
-  "rows": 20
-}
-```
-* `query`: The search term.
-* `filters`: Filters to refine the search results.
-* `sort`: Sorting criteria.
-* `start`: The starting index of the results.
-* `rows`: The number of results to return.
+### Request Structure
+
+The Query API uses the Fredhopper Query Language and query string arguments to request the relevant results. 
+
+Please see the following page for a detailed description of the [Fredhopper Query Language.](https://crownpeak.gitbook.io/product-discovery/fredhopper-integration-guide/fredhopper-integration-guide-1/front-end-integration/fredhopper-query-language)
 
 ### Response Handling and Rendering
 The API returns a JSON response containing search results, facets, and other relevant data. Your storefront application needs to parse this response and render the results appropriately.
@@ -44,30 +23,63 @@ The API returns a JSON response containing search results, facets, and other rel
 Example response:
 ```json
 {
-  "results": [
-    {
-      "id": "123",
-      "name": "Blue T-Shirt",
-      "price": 29.99,
-      "imageUrl": "blue-tshirt.jpg"
-    },
-    {
-      "id": "456",
-      "name": "Red T-Shirt",
-      "price": 34.99,
-      "imageUrl": "red-tshirt.jpg"
+  "info": {
+    "lang": "en",
+    "country": "GB",
+    "locale": { ... },
+    "current-universe": "uk-shop",
+    "view": "search",
+    "mode": "user",
+    "query": "//uk-shop/en_GB/$s=shirt",
+    "path": "/fredhopper/query",
+    "type": "search",
+    "query-string-httpencoded": "fh_location=%2f%2fuk-shop%2fen_GB%2f%24s%3dshirt",
+    "ranges": { ... },
+    "url": "/fredhopper/query.fh?fh_location=%2f%2fuk-shop%2fen_GB%2f%24s%3dshirt",
+    "source-xml": "/fredhopper/query?fh_location=%2f%2fuk-shop%2fen_GB%2f%24s%3dshirt",
+    "server": { ... }
+  },
+  "searchterms": {
+    "term": {
+      "value": "shirt",
+      "profile": ""
     }
-  ],
-  "facets": [
-    {
-      "field": "category",
-      "values": [
-        {"value": "Men's Clothing", "count": 10},
-        {"value": "Women's Clothing", "count": 5}
-      ]
-    }
-  ],
-  "total": 15
+  },
+  "searchpass": "EXACT 2020",
+  "universes": {
+    "universe": [
+      {
+        "link": { ... },
+        "facetmap": [ ... ],
+        "breadcrumbs": { ... },
+        "items-section": {
+          "results": { ... },
+          "heading": { ... },
+          "items": {
+            "item": [ ... ]
+          }
+        },
+        "themes": [ ... ],
+        "display-fields": { ... },
+        "attribute-types": { ... },
+        "name": "uk-shop",
+        "type": "selected"
+      },
+      {
+        "link": {
+          "name": "uk-shoprelated",
+          "url-params": "fh_location=%2f%2fuk-shoprelated%2fen_GB"
+        },
+        "facetmap": [],
+        "themes": [],
+        "name": "uk-shoprelated",
+        "type": "deselected"
+      }
+    ]
+  },
+  "footer": {},
+  "qid": "...",
+  "rid": "..."
 }
 ```
 Your storefront should:
@@ -81,6 +93,8 @@ Faceting allows users to refine their search results by applying filters based o
 
 ### Sorting and Relevance
 Implement sorting options (e.g., by price, relevance, popularity) and ensure that the search results are ranked according to relevance. Fine tune relevancy settings within Fredhopper.
+
+For more details on using the [Fredhopper Query API](https://crownpeak.gitbook.io/product-discovery/fredhopper-integration-guide/fredhopper-integration-guide-1/front-end-integration), see the documentation.
 
 ## Personalization and Recommendations
 
