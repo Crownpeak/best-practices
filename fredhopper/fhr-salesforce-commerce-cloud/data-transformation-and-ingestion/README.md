@@ -36,8 +36,8 @@ The Common Item Data Pipeline (API) provides a flexible method for ingesting dat
 ]
 ```
 
-### Real-time vs. Batch Updates
-- **Real-time Updates:** Send data updates immediately as changes occur in SFCC.
+### Incremental vs. Batch Updates
+- **Incremental Updates:** Send data updates immediately as changes occur in SFCC.
 - **Batch Updates:** Group multiple data updates into a single API call for efficiency.
 
 ### Error Handling and Monitoring
