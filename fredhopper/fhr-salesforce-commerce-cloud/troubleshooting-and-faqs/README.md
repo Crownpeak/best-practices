@@ -32,7 +32,7 @@ This section addresses common issues and frequently asked questions related to i
 ## Frequently Asked Questions
 
 * **Q: What are the best practices for data synchronization between SFCC and Fredhopper?**
-  * **A:** Use incremental updates whenever possible. Implement robust error handling and monitoring. Optimize data transformation scripts.
+  * **A:** Use incremental updates for updates throughout the day and conduct regular scheduled full catalog syncs to ensure data consistency & optimisation. Implement robust error handling and monitoring. Optimize data transformation scripts.
 * **Q: How can I improve the performance of the Fredhopper Query API?**
   * **A:** Implement caching strategies, optimize API queries, and monitor server performance. Use a CDN.
 * **Q: What are the key considerations for security when integrating Fredhopper with SFCC?**
