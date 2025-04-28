@@ -6,19 +6,17 @@
 This section focuses on integrating the Fredhopper Query API into your storefront to provide enhanced search, navigation, and personalization capabilities. We'll cover the essential aspects of implementing the API, from constructing queries to handling responses and optimizing performance.
 
 ## Query API Overview
-
-The Fredhopper Query API is a RESTful interface that allows your storefront to communicate with Fredhopper and retrieve search results, navigation data, and personalized recommendations. It provides a flexible and powerful way to integrate Fredhopper's capabilities into your e-commerce experience.
+The Fredhopper Query API is a RESTful interface that allows your storefront to communicate with Fredhopper and retrieve search results, facets, and personalized recommendations. It provides a flexible and powerful way to integrate Fredhopper's capabilities into your e-commerce experience.
 
 ## Implementing Search and Navigation
 
 ### Request Structure
-
-The Query API uses the Fredhopper Query Language and query string arguments to request the relevant results. 
+The Query API uses the Fredhopper Query Language and query string arguments to request the relevant results.
 
 Please see the following page for a detailed description of the [Fredhopper Query Language.](https://crownpeak.gitbook.io/product-discovery/fredhopper-integration-guide/fredhopper-integration-guide-1/front-end-integration/fredhopper-query-language)
 
 ### Response Handling and Rendering
-The API returns a JSON response containing search results, facets, and other relevant data. Your storefront application needs to parse this response and render the results appropriately.
+The API returns an XML (or JSON if content-type “application/json” is requested) response containing search results, facets, and other relevant data. Your storefront application needs to parse this response and render the results appropriately.
 
 Example response:
 ```json
@@ -82,11 +80,12 @@ Example response:
   "rid": "..."
 }
 ```
+
 Your storefront should:
-* Parse the JSON response.
-* Render the search results as product listings.
-* Display facets for filtering.
-* Implement pagination.
+- Parse the JSON response.
+- Render the search results as product listings.
+- Display facets for filtering.
+- Implement pagination.
 
 ### Faceting and Filtering
 Faceting allows users to refine their search results by applying filters based on product attributes. Implement facet display and filtering logic on your storefront.
@@ -99,7 +98,7 @@ For more details on using the [Fredhopper Query API](https://crownpeak.gitbook.i
 ## Personalization and Recommendations
 
 ### User Context and Profiles
-Utilize user context (e.g., browsing history, purchase history) to personalize search results and recommendations. Pass user information to the Fredhopper API.
+Utilize user context (e.g., browsing history, purchase history) to personalize search results and recommendations. Pass user behaviour to the Fredhopper API.
 
 ### Implementing Recommendations
 Use Fredhopper's recommendation features to display personalized product recommendations. Construct API calls to retrieve recommendations based on user behavior.
@@ -110,31 +109,30 @@ Implement A/B testing to evaluate the effectiveness of different search and reco
 ## Performance Optimization
 
 ### Caching Strategies
-* CDN Caching: Cache static assets and API responses on a CDN.
-* Browser Caching: Utilize browser caching to store frequently accessed data.
-* Server-Side Caching: Implement server-side caching to reduce the load on the Fredhopper API.
+- CDN Caching: Cache static assets and API responses on a CDN.
+- Browser Caching: Utilize browser caching to store frequently accessed data.
+- Server-Side Caching: Implement server-side caching strategies to reduce the load on the Fredhopper API, where applicable/suitable.
 
 ### Query Optimization
-* Optimize query parameters to minimize response time.
-* Use appropriate filters and sorting criteria.
-* Retrieve only the needed data.
+- Optimize query parameters to minimize response time.
+- Use appropriate filters and sorting criteria.
+- Retrieve only the needed data.
 
 ### Load Balancing
-* Distribute API requests across multiple Fredhopper servers.
-* Use load balancers to ensure high availability.
+- Distribute API requests across multiple Fredhopper servers.
+- Use load balancers to ensure high availability.
 
 ## Error Handling and Fallbacks
 
 ### Error Handling
-* Implement error handling for API requests and responses.
-* Display informative error messages to users.
-* Log API errors for troubleshooting.
+- Implement error handling for API requests and responses.
+- Display informative error messages to users.
+- Log API errors for troubleshooting.
 
 ### Fallbacks
-* Implement fallback mechanisms in case the Fredhopper API is unavailable.
-* Consider using cached data or a fallback search engine.
-* Display a user friendly message when the search system is unavailable.
-
+- Implement fallback mechanisms for every third-party data provider.
+- Consider using cached data or a fallback search engine.
+- Display a user-friendly message when the search system is unavailable.
 
 |                                                                                                   |                                                                                                               |
 |---------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
