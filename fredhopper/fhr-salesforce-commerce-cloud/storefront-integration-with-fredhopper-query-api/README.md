@@ -109,7 +109,7 @@ Implement A/B testing to evaluate the effectiveness of different search and reco
 ## Performance Optimization
 
 ### Caching Strategies
-- CDN Caching: Cache static assets and API responses on a CDN.
+- CDN Caching: Cache static assets and API responses on a CDN where possible.
 - Browser Caching: Utilize browser caching to store frequently accessed data.
 - Server-Side Caching: Implement server-side caching strategies to reduce the load on the Fredhopper API, where applicable/suitable.
 
