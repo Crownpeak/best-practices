@@ -5,7 +5,7 @@
 # Introduction
 
 ## Purpose of this Guide
-This guide aims to provide developers and architects with a comprehensive set of best practices, architectural patterns, and practical implementation details for successfully integrating Fredhopper with Salesforce Commerce Cloud (SFCC). It serves as a practical resource, drawing from real-world experiences, to streamline data ingestion, optimize storefront integration through the Query API, and ensure scalable, high-performing e-commerce search and navigation. By providing clear guidance, code examples, and troubleshooting tips, this guide empowers teams to effectively leverage the combined capabilities of Fredhopper and SFCC to deliver enhanced customer experiences.
+This guide aims to provide developers and architects with a comprehensive set of best practices, architectural patterns, and practical implementation details for successfully integrating Fredhopper with Salesforce Commerce Cloud (SFCC). It serves as a practical resource, drawing from real-world experiences, to streamline data ingestion, optimize storefront integration through the Query API, and ensure scalable, high-performing e-commerce search and navigation. By providing clear guidance and troubleshooting tips, this guide empowers teams to effectively leverage the combined capabilities of Fredhopper and SFCC to deliver enhanced customer experiences.
 
 ## Target Audience
 
