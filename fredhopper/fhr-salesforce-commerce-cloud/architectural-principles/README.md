@@ -20,8 +20,6 @@ The follow is a description of each component shown on the High-Level Architectu
 | **Query API** | The API for interacting with Fredhopper for product or navigation queries, returning XML or JSON. |
 | **Suggest** | The API for retrieving search suggestions, returning JSON. |
 | **Data APIs** | The pipeline for providing Fredhopper with product updates, in batch or incremental forms. Data is sent to these APIs to keep product data current within Fredhopper. |
-| TODO: **AI Search** |     |
-| TODO: **AI Scores** |     |
 | **FAS Reporting** | Customer usage data reporting |
 | **p13n** | Realtime Personalization usage data tracker. Customer interaction is notified here to effect realtime updates on product data returned by FAS. |
 | **Salesforce Commerce Cloud** | Salesforce Commerce Cloud (SFCC) is a cloud-based platform that helps businesses sell products and services online. In this diagram, SFCC drives all sales channels within the Retailer Web. |
