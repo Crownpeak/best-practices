@@ -88,9 +88,9 @@ ingestData(apiKey, apiEndpoint, data);
 - **Authentication Errors:** Verify API keys and tokens.
 - **Data Format Errors:** Check the JSON payload for errors.
 - **API Rate Limits:** Monitor API rate limits and implement retry mechanisms.
-- **Check the CIDP Feedback API for status of previous actions.**
+- **CIDP Feedback API:** Check the CIDP Feedback API for the status of previous actions.
 
-For more details on using the [CIDP Items API](https://crownpeak.gitbook.io/product-discovery/product-discovery-developer-guide/item-catalog-management/what-is-the-items-api), see the documentation. Use the
+For more details on using the [CIDP Items API](https://crownpeak.gitbook.io/product-discovery/product-discovery-developer-guide/item-catalog-management/what-is-the-items-api), see the documentation.
 
 ## Flat File Ingestion
 Flat file ingestion is a traditional method of transferring data from SFCC to Fredhopper. It involves exporting data from SFCC into flat files (e.g., CSV, XML), transforming and then uploading these files to Fredhopper for indexing.
@@ -162,8 +162,9 @@ Maintaining data consistency between SFCC and Fredhopper is crucial for accurate
 
 ### Full vs. Incremental Updates
 - **Full Updates:** Replace & re-index all data in Fredhopper.
-- **Incremental Updates:** Update only the changed data (add new, remove existing).
-- Use incremental updates as much as possible to minimize processing time, however full catalog updates are required at regular intervals to ensure data consistency & optimisation.
+- **Incremental Updates:** Update only the changed data (add new, remove or update existing).
+
+Use incremental updates as much as possible to minimise processing time. However, full catalog updates are required at regular intervals to ensure data consistency & optimisation.
 
 ### Handling Deletes and Updates
 - **Deletes:** Implement mechanisms to delete removed products from Fredhopper.
