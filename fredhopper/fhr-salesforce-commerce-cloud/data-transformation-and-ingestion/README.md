@@ -117,4 +117,4 @@ Use incremental updates as much as possible to minimize processing time; however
 
 |                                                                                 |                                                                                                                             |
 |---------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| **Previous: [Architectural Principles](../architectural-principles/README.md)** | **Next: [Storefront Integration with Fredhopper Query API](../storefront-integration-with-fredhopper-query-api/README.md)** |
+| **Previous: [Architectural Principles](../architectural-principles/README.md)** | **Next: [Storefront Integration](../storefront-integration/README.md)** |

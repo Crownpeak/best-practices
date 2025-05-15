@@ -11,7 +11,7 @@ This guide provides best practices for integrating Fredhopper with Salesforce Co
     * [Target Audience](./introduction/README.md#target-audience)
     * [Assumptions and Prerequisites](./introduction/README.md#assumptions-and-prerequisites)
 2.  **[Architectural Principles](./architectural-principles/README.md)**
-    * [High-Level Architecture Overview](./architectural-principles/README.md#high-level-architecture-overview-diagram)
+    * [High-Level Architecture Overview](./architectural-principles/README.md#high-level-architecture-overview)
     * [Scalability and Performance Considerations](./architectural-principles/README.md#scalability-and-performance-considerations)
     * [Security Best Practices](./architectural-principles/README.md#security-best-practices)
 3.  **[Data Transformation and Ingestion](./data-transformation-and-ingestion/README.md)**
@@ -19,12 +19,12 @@ This guide provides best practices for integrating Fredhopper with Salesforce Co
     * [Items API Ingestion](./data-transformation-and-ingestion/README.md#items-api-ingestion)
     * [Flat File Ingestion](./data-transformation-and-ingestion/README.md#flat-file-ingestion)
     * [Data Synchronization Strategies](./data-transformation-and-ingestion/README.md#data-synchronization-strategies)
-4.  **[Storefront Integration with Fredhopper Query API](./storefront-integration-with-fredhopper-query-api/README.md)**
-    * [Query API Overview](./storefront-integration-with-fredhopper-query-api/README.md)
-    * [Implementing Search and Navigation](./storefront-integration-with-fredhopper-query-api/README.md#implementing-search-and-navigation)
-    * [Personalization and Recommendations](./storefront-integration-with-fredhopper-query-api/README.md#personalization-and-recommendations)
-    * [Performance Optimization](./storefront-integration-with-fredhopper-query-api/README.md#performance-optimization)
-    * [Error Handling and Fallbacks](./storefront-integration-with-fredhopper-query-api/README.md#error-handling-and-fallbacks)
+4.  **[Storefront Integration](./storefront-integration/README.md)**
+    * [Query API Overview](./storefront-integration/README.md)
+    * [Implementing Search and Navigation](./storefront-integration/README.md#implementing-search-and-navigation)
+    * [Personalization and Recommendations](./storefront-integration/README.md#personalization-and-recommendations)
+    * [Performance Optimization](./storefront-integration/README.md#performance-optimization)
+    * [Error Handling and Fallbacks](./storefront-integration/README.md#error-handling-and-fallbacks)
 5.  **[Deployment and Operational Considerations](./deployment-and-operational-considerations/README.md)**
     * [Environment Setup (Development, Staging, Production)](./deployment-and-operational-considerations/README.md#environment-setup-development-staging-production)
     * [Monitoring and Logging](./deployment-and-operational-considerations/README.md#monitoring-and-logging)

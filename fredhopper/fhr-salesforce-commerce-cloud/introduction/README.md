@@ -30,6 +30,8 @@ This guide aims to provide developers and architects with a set of best practice
 
 ## Assumptions and Prerequisites
 
+### Assumptions
+
 This guide assumes that readers have a foundational understanding of the following:
 
 - **Salesforce Commerce Cloud (SFCC):**
@@ -45,7 +47,7 @@ This guide assumes that readers have a foundational understanding of the followi
 - **Data Transformation:**
   - Basic understanding of data transformation concepts and scripting languages.
 
-## Prerequisites
+### Prerequisites
 
 - Access to a Salesforce Commerce Cloud (SFCC) instance with relevant data.
 - Access to a Fredhopper instance.
