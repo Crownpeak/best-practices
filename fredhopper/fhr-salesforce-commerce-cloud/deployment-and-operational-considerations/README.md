@@ -3,23 +3,27 @@
 ## [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../README.md)
 
 # Deployment and Operational Considerations
+
 This section addresses the essential aspects of deploying and operating your Fredhopper and Salesforce Commerce Cloud (SFCC) integration. A well-planned deployment strategy and robust operational procedures are crucial for ensuring the stability, reliability, and performance of your e-commerce search and navigation solution.
 
-## Environment Setup (Development, Staging, Production)
-Establish separate environments for development, staging, and production. This ensures that changes are thoroughly tested and validated before being deployed to the live production environment.
+## Environment Setup
+
+Establish separate environments for development, testing, acceptance, and production. This ensures that changes are thoroughly tested and validated before being deployed to the live production environment.
 
 - **Development Environment:**
   - Use a dedicated development environment for coding, testing, and debugging.
   - Populate the development environment with representative data to simulate production scenarios.
-- **Staging Environment:**
+- **Testing and Acceptance Environment(s):**
   - Create a staging environment that mirrors the production environment as closely as possible.
   - Conduct thorough testing, including performance and load testing, in the staging environment.
   - Use the staging environment for user acceptance testing (UAT).
 - **Production Environment:**
   - Deploy only thoroughly tested and validated code to the production environment.
   - Implement a controlled release process to minimize the risk of disruptions.
+  - SFCC editing and live setup is supported.
 
 ## Monitoring and Logging
+
 Implement comprehensive monitoring and logging to track the health and performance of your integration.
 
 - **Monitoring:**
@@ -32,6 +36,7 @@ Implement comprehensive monitoring and logging to track the health and performan
   - Implement log rotation and retention policies.
 
 ## Disaster Recovery and Backup
+
 Establish disaster recovery and backup procedures to ensure business continuity.
 
 - **Backup:**
@@ -44,6 +49,7 @@ Establish disaster recovery and backup procedures to ensure business continuity.
   - Implement failover mechanisms to ensure high availability.
 
 ## Performance Testing and Tuning
+
 Conduct regular performance testing and tuning to optimize the performance of your integration.
 
 - **Performance Testing:**
@@ -54,9 +60,9 @@ Conduct regular performance testing and tuning to optimize the performance of yo
   - Optimize Fredhopper configurations for performance.
   - Tune API query parameters and caching strategies.
   - Optimize database performance, if applicable.
-  - Continuously monitor and tune system performance based on real world data.
+  - Continuously monitor and tune system performance based on real-world data.
 
 
 |                                                                                                                                 |                                                                               |
 |---------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| **Previous: [Storefront Integration with Fredhopper Query API](../storefront-integration-with-fredhopper-query-api/README.md)** | **Next: [Case Studies and Examples](../case-studies-and-examples/README.md)** |
+| **Previous: [Storefront Integration with Fredhopper Query API](../storefront-integration-with-fredhopper-query-api/README.md)** | **Next: [Troubleshooting and FAQs](../troubleshooting-and-faqs/README.md)** |

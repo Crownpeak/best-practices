@@ -6,14 +6,14 @@
 This section focuses on integrating the Fredhopper Query API into your storefront to provide enhanced search, navigation, and personalization capabilities. We'll cover the essential aspects of implementing the API, from constructing queries to handling responses and optimizing performance.
 
 ## Query API Overview
-The Fredhopper Query API is a RESTful interface that allows your storefront to communicate with Fredhopper and retrieve search results, facets, and personalized recommendations. It provides a flexible and powerful way to integrate Fredhopper's capabilities into your e-commerce experience.
+The Fredhopper Query API is a RESTful interface that allows your storefront to communicate with Fredhopper and retrieve search results, facets, and campaigns .
 
 ## Implementing Search and Navigation
 
 ### Request Structure
 The Query API uses the Fredhopper Query Language and query string arguments to request the relevant results.
 
-Please see the following page for a detailed description of the [Fredhopper Query Language.](https://crownpeak.gitbook.io/product-discovery/fredhopper-integration-guide/fredhopper-integration-guide-1/front-end-integration/fredhopper-query-language)
+> Please see the following page for a detailed description of the [Fredhopper Query Language.](https://crownpeak.gitbook.io/product-discovery/fredhopper-integration-guide/fredhopper-integration-guide-1/front-end-integration/fredhopper-query-language)
 
 ### Response Handling and Rendering
 The API returns an XML (or JSON if content-type “application/json” is requested) response containing search results, facets, and other relevant data. Your storefront application needs to parse this response and render the results appropriately.
@@ -82,41 +82,43 @@ Example response:
 ```
 
 Your storefront should:
-- Parse the JSON response.
-- Render the search results as product listings.
+- Parse the JSON or XML response.
+- Render the  results as product listings.
 - Display facets for filtering.
 - Implement pagination.
+- Apply redirects
+- Render the campaigns (text, image and items)
 
 ### Faceting and Filtering
 Faceting allows users to refine their search results by applying filters based on product attributes. Implement facet display and filtering logic on your storefront.
 
 ### Sorting and Relevance
-Implement sorting options (e.g., by price, relevance, popularity) and ensure that the search results are ranked according to relevance. Fine tune relevancy settings within Fredhopper.
+Implement sorting options (e.g., by price, relevance, popularity) and ensure that the search results are ranked according to relevance. Fine tune relevancy settings within Fredhopper.   
 
-For more details on using the [Fredhopper Query API](https://crownpeak.gitbook.io/product-discovery/fredhopper-integration-guide/fredhopper-integration-guide-1/front-end-integration), see the documentation.
+> For more details on using the [Query API](https://crownpeak.gitbook.io/product-discovery/fredhopper-integration-guide/fredhopper-integration-guide-1/front-end-integration), see the documentation.
 
 ## Personalization and Recommendations
 
 ### User Context and Profiles
-Utilize user context (e.g., browsing history, purchase history) to personalize search results and recommendations. Pass user behaviour to the Fredhopper API.
+Utilize user context (e.g., browsing history, purchase history) to personalize search results and recommendations.
 
 ### Implementing Recommendations
-Use Fredhopper's recommendation features to display personalized product recommendations. Construct API calls to retrieve recommendations based on user behavior.
+Use Fredhopper's recommendation features to display personalized product recommendations. Construct API calls to retrieve recommendations based on user context.
 
 ### A/B Testing and Optimization
-Implement A/B testing to evaluate the effectiveness of different search and recommendation strategies. Use analytics to track user behavior and optimize performance.
+Implement A/B testing to evaluate the effectiveness of different search and recommendation strategies. Use analytics to track user behaviour and optimise conversion.
 
 ## Performance Optimization
 
 ### Caching Strategies
-- CDN Caching: Cache static assets and API responses on a CDN where possible.
-- Browser Caching: Utilize browser caching to store frequently accessed data.
-- Server-Side Caching: Implement server-side caching strategies to reduce the load on the Fredhopper API, where applicable/suitable.
+- **CDN Caching:** Cache static assets and API responses on a CDN where possible.   
+- **Browser Caching:** Utilize browser caching to store frequently accessed data.   
+- **Server-Side Caching:** Implement server-side caching strategies to reduce the load on the Fredhopper Query API, where applicable/suitable.    
 
 ### Query Optimization
 - Optimize query parameters to minimize response time.
 - Use appropriate filters and sorting criteria.
-- Retrieve only the needed data.
+- Retrieve only the needed data by maintaining the proper display fields. 
 
 ### Load Balancing
 - Distribute API requests across multiple Fredhopper servers.
