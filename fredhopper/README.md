@@ -5,6 +5,7 @@ This document is provided to assist with the deployment of Crownpeak Products an
 
 ## Product Discovery (Fredhopper & Experience Orchestrator)
  * [Fredhopper & Salesforce Commerce Cloud Reference Architecture](./fhr-salesforce-commerce-cloud/README.md)
+ * [Fredhopper & Shopify Reference Architecture](./fhr-shopify-app/README.md)
 
 
 ##  Legal Notices
