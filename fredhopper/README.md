@@ -1,4 +1,18 @@
-# README
+---
+layout:
+  title:
+    visible: false
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
+# Crownpeak Best Practices
 
 [![Crownpeak Logo](../images/logo/crownpeak-logo.png)](http://www.crownpeak.com)
 
