@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # README
 
 [![Crownpeak Logo](../images/logo/crownpeak-logo.png)](http://www.crownpeak.com)
