@@ -1,6 +1,6 @@
 # Table of contents
 
-* [README](README.md)
+* [Crownpeak Best Practices](README.md)
 * [Fredhopper & Salesforce Commerce Cloud Reference Architecture](fhr-salesforce-commerce-cloud/README.md)
   * [Introduction](fhr-salesforce-commerce-cloud/introduction/README.md)
   * [Architectural Principles](fhr-salesforce-commerce-cloud/architectural-principles/README.md)
