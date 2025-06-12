@@ -15,8 +15,6 @@ layout:
 
 # Reference Architectures & Integration Guides
 
-Reference Architectures & Integration Guides
-
 This document is provided to assist with the deployment of Crownpeak Products and Services into the wider customer experience architecture.
 
 ## Fredhopper & Experience Orchestrator
