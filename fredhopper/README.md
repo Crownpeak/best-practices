@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout:
   title:
     visible: false
@@ -12,7 +13,7 @@ layout:
     visible: true
 ---
 
-# Crownpeak Best Practices
+# README
 
 [![Crownpeak Logo](../images/logo/crownpeak-logo.png)](http://www.crownpeak.com)
 
