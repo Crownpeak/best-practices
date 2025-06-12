@@ -12,17 +12,13 @@ layout:
     visible: true
 ---
 
+**[Salesforce Commerce Cloud Reference Architecture](../README.md)**
+
 # Troubleshooting and FAQs
-
-[![Crownpeak Logo](../../../images/logo/crownpeak-logo.png)](http://www.crownpeak.com)
-
-### [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../)
-
-## Troubleshooting and FAQs
 
 This section addresses common issues and frequently asked questions related to integrating Fredhopper with Salesforce Commerce Cloud (SFCC). It provides practical solutions and guidance for resolving potential problems.
 
-### Common Issues and Solutions
+## Common Issues and Solutions
 
 * **Data Ingestion Issues:**
   * **Issue:** Flat file upload fails.
@@ -46,7 +42,7 @@ This section addresses common issues and frequently asked questions related to i
   * **Issue:** Recommendation widgets are not displaying.
     * **Solution:** Verify that the user profile data is being correctly sent to Fredhopper. Check the recommendation configuration in Fredhopper.
 
-### Frequently Asked Questions
+## Frequently Asked Questions
 
 * **Q:** What are the best practices for data synchronization between SFCC and Fredhopper?
   * **A:** Use incremental updates for updates throughout the day and conduct regular scheduled full catalog syncs to ensure data consistency & optimization. Implement robust error handling and monitoring. Optimize data transformation scripts.
@@ -66,7 +62,3 @@ This section addresses common issues and frequently asked questions related to i
   * **A:** Ensure that the delete event is registered in your data pipeline, and that a delete request is sent to Items API.
 * **Q:** What version of OCAPI should I use?
   * **A:** Always use the latest stable version of OCAPI.
-
-|                                                                                                              |   |
-| ------------------------------------------------------------------------------------------------------------ | - |
-| **Previous:** [**Deployment and Operational Considerations**](../deployment-and-operational-considerations/) |   |

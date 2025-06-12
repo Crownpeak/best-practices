@@ -12,19 +12,15 @@ layout:
     visible: true
 ---
 
+**[Salesforce Commerce Cloud Reference Architecture](../README.md)**
+
 # Introduction
 
-[![Crownpeak Logo](../../../images/logo/crownpeak-logo.png)](http://www.crownpeak.com)
-
-### [Fredhopper & Salesforce Commerce Cloud Reference Architecture](../)
-
-## Introduction
-
-### Purpose of this Guide
+## Purpose of this Guide
 
 This guide aims to provide developers and architects with a set of best practices, architectural patterns, and practical implementation details to successfully integrate Fredhopper with Salesforce Commerce Cloud (SFCC). It serves as a practical resource, drawing from real-world experiences, to streamline data ingestion and storefront integration, and ensure scalable, high-performing e-commerce search and navigation. By providing clear guidance and troubleshooting tips, this guide empowers teams to effectively leverage the combined capabilities of Fredhopper and SFCC to deliver enhanced customer experiences.
 
-### Target Audience
+## Target Audience
 
 * **E-commerce Developers:**
   * Those responsible for implementing and maintaining the storefront integration between SFCC and Fredhopper.
@@ -44,9 +40,9 @@ This guide aims to provide developers and architects with a set of best practice
 * **Fredhopper Administrators:**
   * Those who are responsible for the data imports into Fredhopper, and need to understand how that data is being provided from SFCC.
 
-### Assumptions and Prerequisites
+## Assumptions and Prerequisites
 
-#### Assumptions
+### Assumptions
 
 This guide assumes that readers have a foundational understanding of the following:
 
@@ -63,13 +59,9 @@ This guide assumes that readers have a foundational understanding of the followi
 * **Data Transformation:**
   * Basic understanding of data transformation concepts and scripting languages.
 
-#### Prerequisites
+### Prerequisites
 
 * Access to a Salesforce Commerce Cloud (SFCC) instance with relevant data.
 * Access to a Fredhopper instance.
 * Appropriate developer tools and environments (e.g., IDE, command-line tools).
 * API credentials for both SFCC and Fredhopper, when the API ingestion method is being used.
-
-|                                            |                                                                        |
-| ------------------------------------------ | ---------------------------------------------------------------------- |
-| **Previous:** [**Table of Contents**](../) | **Next:** [**Architectural Principles**](../architectural-principles/) |
