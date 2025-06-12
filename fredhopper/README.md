@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout:
   title:
     visible: false
@@ -18,7 +19,7 @@ This document is provided to assist with the deployment of Crownpeak Products an
 
 ## Fredhopper & Experience Orchestrator
 
-* [Salesforce Commerce Cloud Reference Architecture](fhr-salesforce-commerce-cloud/)
+* [Commerce Cloud Reference Architecture](fhr-salesforce-commerce-cloud/)
 
 ### Legal Notices
 
