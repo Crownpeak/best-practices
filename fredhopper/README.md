@@ -1,5 +1,4 @@
 ---
-hidden: true
 layout:
   title:
     visible: false
@@ -13,13 +12,39 @@ layout:
     visible: true
 ---
 
-# Reference Architectures & Integration Guides
+# Salesforce Commerce Cloud Reference Architecture
 
-This document is provided to assist with the deployment of Crownpeak Products and Services into the wider customer experience architecture.
+This guide provides best practices for integrating Fredhopper with Salesforce Commerce Cloud (SFCC), covering architectural principles, data ingestion, and storefront integration.
 
-## Fredhopper & Experience Orchestrator
+**Table of Contents**
 
-* [Commerce Cloud Reference Architecture](fhr-salesforce-commerce-cloud/)
+1. [**Introduction**](fhr-salesforce-commerce-cloud/introduction/)
+   * [Purpose of this Guide](fhr-salesforce-commerce-cloud/introduction/#purpose-of-this-guide)
+   * [Target Audience](fhr-salesforce-commerce-cloud/introduction/#target-audience)
+   * [Assumptions and Prerequisites](fhr-salesforce-commerce-cloud/introduction/#assumptions-and-prerequisites)
+2. [**Architectural Principles**](fhr-salesforce-commerce-cloud/architectural-principles/)
+   * [High-Level Architecture Overview](fhr-salesforce-commerce-cloud/architectural-principles/#high-level-architecture-overview)
+   * [Scalability and Performance Considerations](fhr-salesforce-commerce-cloud/architectural-principles/#scalability-and-performance-considerations)
+   * [Security Best Practices](fhr-salesforce-commerce-cloud/architectural-principles/#security-best-practices)
+3. [**Data Transformation and Ingestion**](fhr-salesforce-commerce-cloud/data-transformation-and-ingestion/)
+   * [Overview of Data Flow](fhr-salesforce-commerce-cloud/data-transformation-and-ingestion/#overview-of-data-flow)
+   * [Items API Ingestion](fhr-salesforce-commerce-cloud/data-transformation-and-ingestion/#items-api-ingestion)
+   * [Flat File Ingestion](fhr-salesforce-commerce-cloud/data-transformation-and-ingestion/#flat-file-ingestion)
+   * [Data Synchronization Strategies](fhr-salesforce-commerce-cloud/data-transformation-and-ingestion/#data-synchronization-strategies)
+4. [**Storefront Integration**](fhr-salesforce-commerce-cloud/storefront-integration/)
+   * [Query API Overview](fhr-salesforce-commerce-cloud/storefront-integration/)
+   * [Implementing Search and Navigation](fhr-salesforce-commerce-cloud/storefront-integration/#implementing-search-and-navigation)
+   * [Personalization and Recommendations](fhr-salesforce-commerce-cloud/storefront-integration/#personalization-and-recommendations)
+   * [Performance Optimization](fhr-salesforce-commerce-cloud/storefront-integration/#performance-optimization)
+   * [Error Handling and Fallbacks](fhr-salesforce-commerce-cloud/storefront-integration/#error-handling-and-fallbacks)
+5. [**Deployment and Operational Considerations**](fhr-salesforce-commerce-cloud/deployment-and-operational-considerations/)
+   * [Environment Setup (Development, Staging, Production)](fhr-salesforce-commerce-cloud/deployment-and-operational-considerations/#environment-setup-development-staging-production)
+   * [Monitoring and Logging](fhr-salesforce-commerce-cloud/deployment-and-operational-considerations/#monitoring-and-logging)
+   * [Disaster Recovery and Backup](fhr-salesforce-commerce-cloud/deployment-and-operational-considerations/#disaster-recovery-and-backup)
+   * [Performance Testing and Tuning](fhr-salesforce-commerce-cloud/deployment-and-operational-considerations/#performance-testing-and-tuning)
+6. [**Troubleshooting and FAQs**](fhr-salesforce-commerce-cloud/troubleshooting-and-faqs/)
+   * [Common Issues and Solutions](fhr-salesforce-commerce-cloud/troubleshooting-and-faqs/#common-issues-and-solutions)
+   * [Frequently Asked Questions](fhr-salesforce-commerce-cloud/troubleshooting-and-faqs/#frequently-asked-questions)
 
 ### Legal Notices
 

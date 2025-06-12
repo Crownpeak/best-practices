@@ -12,17 +12,19 @@ layout:
     visible: true
 ---
 
-**[Salesforce Commerce Cloud Reference Architecture](../README.md)**
-
 # Data Transformation and Ingestion
 
-## Overview of Data Flow
+[**Salesforce Commerce Cloud Reference Architecture**](../../)
+
+## Data Transformation and Ingestion
+
+### Overview of Data Flow
 
 This section delves into the crucial aspect of data transformation and ingestion, which forms the backbone of the Fredhopper and Salesforce Commerce Cloud (SFCC) integration. Accurate and efficient data flow is essential for ensuring that Fredhopper's search, merchandising, and navigation capabilities are powered by up-to-date and relevant product information directly from either SFCC or from the source systems that provide data to SFCC.
 
 We will explore the two primary methods of data ingestion: Flat File Integration using the Services API and API Integration using the Items API. Understanding the nuances of each method, including data extraction, transformation, and synchronization strategies, is vital for a successful integration. We'll outline the general data flow, highlighting the key stages and considerations in moving data from SFCC to Fredhopper.
 
-## Items API Ingestion
+### Items API Ingestion
 
 The Item API provides a flexible method for ingesting data into Fredhopper. It allows you to send data updates to Fredhopper using API calls.
 
@@ -71,7 +73,7 @@ The Item API provides a flexible method for ingesting data into Fredhopper. It a
 
 > For more details on using the [Items API](https://crownpeak.gitbook.io/product-discovery/product-discovery-developer-guide/item-catalog-management/what-is-the-items-api), see the documentation.
 
-## Flat File Ingestion
+### Flat File Ingestion
 
 Flat file ingestion is a traditional method of transferring data from SFCC to Fredhopper. It involves exporting data from SFCC into flat files (e.g., CSV, JSON), transforming them, and then uploading them to Fredhopper for indexing using the Services API.
 
@@ -105,7 +107,7 @@ Flat file ingestion is a traditional method of transferring data from SFCC to Fr
 
 > For more details on using [Flat File Ingestion](https://crownpeak.gitbook.io/product-discovery/fredhopper-integration-guide/fredhopper-integration-guide-1/data-integration), see the documentation.
 
-## Data Synchronization Strategies
+### Data Synchronization Strategies
 
 Maintaining data consistency between SFCC and Fredhopper is crucial for accurate search and navigation.
 

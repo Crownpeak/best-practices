@@ -12,13 +12,15 @@ layout:
     visible: true
 ---
 
-**[Salesforce Commerce Cloud Reference Architecture](../README.md)**
-
 # Deployment and Operational Considerations
+
+[**Salesforce Commerce Cloud Reference Architecture**](../../)
+
+## Deployment and Operational Considerations
 
 This section addresses the essential aspects of deploying and operating your Fredhopper and Salesforce Commerce Cloud (SFCC) integration. A well-planned deployment strategy and robust operational procedures are crucial for ensuring the stability, reliability, and performance of your e-commerce search and navigation solution.
 
-## Environment Setup
+### Environment Setup
 
 Establish separate environments for development, testing, acceptance, and production. This ensures that changes are thoroughly tested and validated before being deployed to the live production environment.
 
@@ -34,7 +36,7 @@ Establish separate environments for development, testing, acceptance, and produc
   * Implement a controlled release process to minimize the risk of disruptions.
   * SFCC editing and live setup is supported.
 
-## Monitoring and Logging
+### Monitoring and Logging
 
 Implement comprehensive monitoring and logging to track the health and performance of your integration.
 
@@ -47,7 +49,7 @@ Implement comprehensive monitoring and logging to track the health and performan
   * Use a centralized logging system to facilitate troubleshooting.
   * Implement log rotation and retention policies.
 
-## Disaster Recovery and Backup
+### Disaster Recovery and Backup
 
 Establish disaster recovery and backup procedures to ensure business continuity.
 
@@ -60,7 +62,7 @@ Establish disaster recovery and backup procedures to ensure business continuity.
   * Test the disaster recovery plan regularly.
   * Implement failover mechanisms to ensure high availability.
 
-## Performance Testing and Tuning
+### Performance Testing and Tuning
 
 Conduct regular performance testing and tuning to optimize the performance of your integration.
 
