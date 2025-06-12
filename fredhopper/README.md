@@ -12,17 +12,13 @@ layout:
     visible: true
 ---
 
-# Crownpeak Best Practices
-
-[![Crownpeak Logo](../images/logo/crownpeak-logo.png)](http://www.crownpeak.com)
-
-## Crownpeak Best Practices
+# Reference Architectures & Integration Guides
 
 This document is provided to assist with the deployment of Crownpeak Products and Services into the wider customer experience architecture.
 
-### Product Discovery (Fredhopper & Experience Orchestrator)
+## Fredhopper & Experience Orchestrator
 
-* [Fredhopper & Salesforce Commerce Cloud Reference Architecture](fhr-salesforce-commerce-cloud/)
+* [Salesforce Commerce Cloud Reference Architecture](fhr-salesforce-commerce-cloud/)
 
 ### Legal Notices
 
