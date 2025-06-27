@@ -1,4 +1,5 @@
 ---
+hidden: true
 icon: info
 layout:
   title:
