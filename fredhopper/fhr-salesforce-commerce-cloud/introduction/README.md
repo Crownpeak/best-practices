@@ -14,8 +14,6 @@ layout:
 
 # Introduction
 
-[**Salesforce Commerce Cloud Reference Architecture**](../../)
-
 ## Introduction
 
 ### Purpose of this Guide

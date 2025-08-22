@@ -14,8 +14,6 @@ layout:
 
 # Troubleshooting and FAQs
 
-[**Salesforce Commerce Cloud Reference Architecture**](../../)
-
 ## Troubleshooting and FAQs
 
 This section addresses common issues and frequently asked questions related to integrating Fredhopper with Salesforce Commerce Cloud (SFCC). It provides practical solutions and guidance for resolving potential problems.

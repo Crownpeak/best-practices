@@ -14,8 +14,6 @@ layout:
 
 # Storefront Integration
 
-[**Salesforce Commerce Cloud Reference Architecture**](../../)
-
 ## Storefront Integration
 
 This section focuses on integrating the Fredhopper Query API into your storefront to provide enhanced search, navigation, and personalization capabilities. We'll cover the essential aspects of implementing the API, from constructing queries to handling responses and optimizing performance.

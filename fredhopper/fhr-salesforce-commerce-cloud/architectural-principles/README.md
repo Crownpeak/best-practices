@@ -14,8 +14,6 @@ layout:
 
 # Architectural Principles
 
-[**Salesforce Commerce Cloud Reference Architecture**](../../)
-
 ## Architectural Principles
 
 This section outlines the fundamental architectural principles for integrating Fredhopper with Salesforce Commerce Cloud (SFCC). A well-defined architecture is crucial for ensuring a scalable, performant, and maintainable integration. We'll explore the high-level system overview, key component interactions, and essential considerations for security and performance.

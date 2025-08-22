@@ -14,8 +14,6 @@ layout:
 
 # Data Transformation and Ingestion
 
-[**Salesforce Commerce Cloud Reference Architecture**](../../)
-
 ## Data Transformation and Ingestion
 
 ### Overview of Data Flow
