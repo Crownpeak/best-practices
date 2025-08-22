@@ -100,9 +100,11 @@ This is useful to ensure that the app has the latest set of data from Shopify or
 
 Once a staged batch is ready, you will see following displayed within the Catalog Manager.
 
+![Shopify App Catalog Manager Page](../../images/shopify/promotebatch.png "Shopify App Catalog Manager Page")
+
 You can click the Promote button to activate the catalog within Fredhopper which will immediately start the indexing process inside Fredhopper.
 
-Alternately, you can abandon the staged catalog by selecting the new New Catalog radio button and clicking the Create New Catalog button
+Alternately, you can abandon the staged catalog by selecting the new Create New Catalog radio button and clicking the Create New Catalog button
 
 ## Setting a Schedule
 
