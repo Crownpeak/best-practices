@@ -1,7 +1,9 @@
 ---
+icon: browser
 layout:
+  width: default
   title:
-    visible: false
+    visible: true
   description:
     visible: false
   tableOfContents:
@@ -10,11 +12,11 @@ layout:
     visible: true
   pagination:
     visible: true
+  metadata:
+    visible: true
 ---
 
 # Storefront Integration
-
-## Storefront Integration
 
 This section focuses on integrating the Fredhopper Query API into your storefront to provide enhanced search, navigation, and personalization capabilities. We'll cover the essential aspects of implementing the API, from constructing queries to handling responses and optimizing performance.
 

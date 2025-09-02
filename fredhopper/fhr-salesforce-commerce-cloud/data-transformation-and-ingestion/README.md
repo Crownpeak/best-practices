@@ -1,7 +1,9 @@
 ---
+icon: database
 layout:
+  width: default
   title:
-    visible: false
+    visible: true
   description:
     visible: false
   tableOfContents:
@@ -10,11 +12,11 @@ layout:
     visible: true
   pagination:
     visible: true
+  metadata:
+    visible: true
 ---
 
 # Data Transformation and Ingestion
-
-## Data Transformation and Ingestion
 
 ### Overview of Data Flow
 

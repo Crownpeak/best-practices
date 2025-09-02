@@ -1,5 +1,4 @@
 ---
-icon: app-store
 layout:
   width: default
   title:

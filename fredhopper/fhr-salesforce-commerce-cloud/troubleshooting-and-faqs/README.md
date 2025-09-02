@@ -1,7 +1,9 @@
 ---
+icon: seal-question
 layout:
+  width: default
   title:
-    visible: false
+    visible: true
   description:
     visible: false
   tableOfContents:
@@ -10,11 +12,11 @@ layout:
     visible: true
   pagination:
     visible: true
+  metadata:
+    visible: true
 ---
 
 # Troubleshooting and FAQs
-
-## Troubleshooting and FAQs
 
 This section addresses common issues and frequently asked questions related to integrating Fredhopper with Salesforce Commerce Cloud (SFCC). It provides practical solutions and guidance for resolving potential problems.
 

@@ -1,5 +1,4 @@
 ---
-icon: sitemap
 layout:
   width: default
   title:

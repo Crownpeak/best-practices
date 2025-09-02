@@ -1,7 +1,9 @@
 ---
+icon: sitemap
 layout:
+  width: default
   title:
-    visible: false
+    visible: true
   description:
     visible: false
   tableOfContents:
@@ -10,11 +12,11 @@ layout:
     visible: true
   pagination:
     visible: true
+  metadata:
+    visible: true
 ---
 
 # Architectural Principles
-
-## Architectural Principles
 
 This section outlines the fundamental architectural principles for integrating Fredhopper with Salesforce Commerce Cloud (SFCC). A well-defined architecture is crucial for ensuring a scalable, performant, and maintainable integration. We'll explore the high-level system overview, key component interactions, and essential considerations for security and performance.
 

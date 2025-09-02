@@ -1,7 +1,9 @@
 ---
+icon: server
 layout:
+  width: default
   title:
-    visible: false
+    visible: true
   description:
     visible: false
   tableOfContents:
@@ -10,11 +12,11 @@ layout:
     visible: true
   pagination:
     visible: true
+  metadata:
+    visible: true
 ---
 
 # Deployment and Operational Considerations
-
-## Deployment and Operational Considerations
 
 This section addresses the essential aspects of deploying and operating your Fredhopper and Salesforce Commerce Cloud (SFCC) integration. A well-planned deployment strategy and robust operational procedures are crucial for ensuring the stability, reliability, and performance of your e-commerce search and navigation solution.
 
