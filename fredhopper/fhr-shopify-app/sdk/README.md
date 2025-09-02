@@ -1,10 +1,12 @@
-# Fredhopper SDK Documentation
-
-A lightweight JavaScript SDK for interacting with Fredhopper search and merchandising APIs through Shopify proxies.
+# JavaScript SDK Documentation
 
 ## Overview
 
-The Fredhopper SDK is designed as a **lean API client** focused on making it easy to query Fredhopper endpoints while letting developers build their own UI and rendering logic. It handles authentication, request formatting, and provides utilities for common Fredhopper operations.
+The Fredhopper SDK is designed as a lean API client for interacting with the Fredhopper Query API, through the Shopify App Proxy, focused on making it easy to query Fredhopper endpoints while letting developers build their own UI and rendering logic. It handles authentication, request formatting, and provides utilities for common Fredhopper operations.
+
+> To enable the [SDK Theme Embed](../user-guide/README.md#enabling-the-javascript-sdk), see the documentation
+
+> For more details on using the [Fredhopper Query Language](https://crownpeak.gitbook.io/product-discovery/building-the-front-end-experience-with-fhr/fredhopper-query-language), used by both the SDK and the Query API, see the documentation.
 
 ## Quick Start
 
