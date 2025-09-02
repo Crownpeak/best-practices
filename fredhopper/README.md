@@ -15,6 +15,4 @@ layout:
 
 # Third Party Integration Guides
 
-This guide provides best practices for integrating Fredhopper with Salesforce Commerce Cloud (SFCC), covering architectural principles, data ingestion, and storefront integration.
-
-...
+Welcome to Third Party Integration Guides, providing user guides, documentation and reference architectures, detailing how to integrating with Crownpeak's Product Discovery solutions.

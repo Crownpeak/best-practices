@@ -12,7 +12,9 @@ layout:
     visible: true
 ---
 
-# Introduction
+# Salesforce Commerce Cloud Reference Architecture
+
+This guide provides best practices for integrating Fredhopper with Salesforce Commerce Cloud (SFCC), covering architectural principles, data ingestion, and storefront integration.
 
 ## Introduction
 
