@@ -17,6 +17,8 @@ layout:
 
 # Fredhopper Product Discovery Shopify App
 
+### Introduction
+
 The Fredhopper Product Discovery App integrates Crownpeak’s Fredhopper into Shopify, bringing AI-powered search, merchandising, and recommendations directly into your storefront.
 
 It enables faster time-to-market with a ready-made connector, simplified catalog syncs and schema management, global multi-language/multi-region support with Shopify Markets, and secure frontend integration with the Fredhopper Query API via the Shopify App Proxy.
