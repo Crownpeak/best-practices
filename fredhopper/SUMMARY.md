@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Salesforce Commerce Cloud Reference Architecture](README.md)
+* [Third Party Integration Guides](README.md)
   * [Introduction](fhr-salesforce-commerce-cloud/introduction/README.md)
   * [Architectural Principles](fhr-salesforce-commerce-cloud/architectural-principles/README.md)
   * [Data Transformation and Ingestion](fhr-salesforce-commerce-cloud/data-transformation-and-ingestion/README.md)
