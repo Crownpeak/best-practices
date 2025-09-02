@@ -16,3 +16,6 @@ layout:
 # Third Party Integration Guides
 
 Welcome to Third Party Integration Guides, providing user guides, documentation and reference architectures, detailing how to integrating with Crownpeak's Product Discovery solutions.
+
+  * [Fredhopper Product Discovery Shopify App](fhr-shopify-app/README.md)
+  * [Salesforce Commerce Cloud Reference Architecture](fhr-salesforce-commerce-cloud/introduction/README.md)

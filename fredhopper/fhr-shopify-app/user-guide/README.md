@@ -2,7 +2,7 @@
 
 ## Installing the app
 
-To install the app inside your Shopify store, visit the App Store and type Fredhopper, or use the following URL: https://apps.shopify.com/fredhopper-product-discovery 
+To install the app inside your Shopify store, visit the App Store and type Fredhopper, or use the following URL: [Fredhopper Product Discovery](https://apps.shopify.com/fredhopper-product-discovery)
 
 Click the install button and when prompted give the app the necessary permission.
 
