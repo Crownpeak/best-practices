@@ -1,4 +1,22 @@
-# Shopify App User Guide
+---
+icon: book-open
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+  metadata:
+    visible: true
+---
+
+# User Guide
 
 ## Installing the app
 
@@ -18,19 +36,19 @@ The Fredhopper tracking pixel extension allows click data to be sent to Fredhopp
 
 To install the pixel, click the Install Pixel Extention button on the Settings page of the app.
 
-![Shopify App Settings Page](../../../images/shopify/settings.png "Shopify App Settings Page")
+![Shopify App Settings Page](../../../images/shopify/settings.png)
 
 You can remove the Web Pixel at anytime by clicking the Remove Pixel Extension button.
 
 ### Enabling the JavaScript SDK
 
-The JavaScript SDK allows developers to integrate Fredhopper into your front-end  themes and blocks. The SDK adds an object to the window that you can use to make calls to the Fredhopper Query API via the Shopify App Proxy, adding the necessary filters to each call, and receiving the results to render on the page.
+The JavaScript SDK allows developers to integrate Fredhopper into your front-end themes and blocks. The SDK adds an object to the window that you can use to make calls to the Fredhopper Query API via the Shopify App Proxy, adding the necessary filters to each call, and receiving the results to render on the page.
 
 You can enable the SDK via the Settings page of the app by clicking on the Enable Fredhopper SDK button. Or by visiting theme editor within the Shopify Admin, selecting the App Embeds panel and toggling the Fredhopper SDK Loader.
 
-![Shopify App SDK Loader](../../../images/shopify/sdk.png "Shopify App SDK Loader")
+![Shopify App SDK Loader](../../../images/shopify/sdk.png)
 
-For more information on using the SDK, please view the [SDK Documentation](../sdk/README.md)
+For more information on using the SDK, please view the [SDK Documentation](../sdk/)
 
 ## Using the Schema Manager
 
@@ -38,7 +56,7 @@ The Schema Manager allows you to create a schema that tells Fredhopper the shape
 
 The schema manager displays the data fields within Shopify and allows them to be mapped to types in Fredhopper. You can add, remove or adjust these.
 
-![Shopify App Schema Manager Page](../../../images/shopify/schema1.png "Shopify App Schema Manager Page")
+![Shopify App Schema Manager Page](../../../images/shopify/schema1.png)
 
 In addition to the basic product fields, the app also supports most metafield formats within Shopify with the exception of reference type metafields. Any reference type metafields included in the schema will only send the object reference to Fredhopper.
 
@@ -56,7 +74,7 @@ The Catalog Manager shows you the details of the current active catalog in Fredh
 
 To sync all of the product data and create a new catalog in Fredhopper, you can first select the Schema to used, the latest version of the schema will be selected be default, and click the Create New Catalog button.
 
-![Shopify App Catalog Manager Page](../../../images/shopify/catalog.png "Shopify App Catalog Manager Page")
+![Shopify App Catalog Manager Page](../../../images/shopify/catalog.png)
 
 The will start the process of batching the data from Shopify, running the transformation and post processing jobs and send the data to Fredhopper.
 
@@ -68,19 +86,19 @@ Any none structural changes to products, such as updating a product’s title, w
 
 ## Using the Batch Manager
 
-The Batch Manager allows you to view the progress of any running batch jobs and the status a previous jobs. 
+The Batch Manager allows you to view the progress of any running batch jobs and the status a previous jobs.
 
-You can also create a create a staging catalog from within the Batch Manager. 
+You can also create a create a staging catalog from within the Batch Manager.
 
 When you create a staging catalog it will prepare a batch and process and transform the data from Shopify in the same way that the Catalog Manager does but it will not activate the data in Fredhopper until later activated via the Catalog Manager.
 
-![Shopify App Batch Manager Page](../../../images/shopify/batch.png "Shopify App Batch Manager Page")
+![Shopify App Batch Manager Page](../../../images/shopify/batch.png)
 
 This is useful to ensure that the app has the latest set of data from Shopify or to prepare a data sync that you want to activate in Fredhopper at a certain point.
 
 Once a staged batch is ready, you will see following displayed within the Catalog Manager.
 
-![Shopify App Catalog Manager Page](../../../images/shopify/promotebatch.png "Shopify App Catalog Manager Page")
+![Shopify App Catalog Manager Page](../../../images/shopify/promotebatch.png)
 
 You can click the Promote button to activate the catalog within Fredhopper which will immediately start the indexing process inside Fredhopper.
 
@@ -92,7 +110,7 @@ Using the Batch Manger, you can also set a scheduled to run a full catalog sync 
 
 This will perform a full catalog sync in the same way as the manual catalog sync works but at a specific point in time.
 
-![Shopify App Schedule Manager Page](../../../images/shopify/schedule.png "Shopify App Schedule Manager Page")
+![Shopify App Schedule Manager Page](../../../images/shopify/schedule.png)
 
 We recommend that you do a nightly sync of all your product data, with incremental updates running throughout the day as products are updated.
 
@@ -100,6 +118,6 @@ We recommend that you do a nightly sync of all your product data, with increment
 
 In additional to the SDK, the app also provides two basic Theme App Blocks with fixed layouts, one for collection pages and one for search, that can be used out-of-box within your shop’s theme. These blocks use the SDK to retrieve data from the Fredhopper Query API and render the results, including facets, within a listing format.
 
-![Shopify App Theme App Block](../../../images/shopify/themeappblock.png "Shopify App Theme App Block")
+![Shopify App Theme App Block](../../../images/shopify/themeappblock.png)
 
-For more information on using the SDK, please view the [SDK Documentation](../sdk/README.md)
+For more information on using the SDK, please view the [SDK Documentation](../sdk/)
