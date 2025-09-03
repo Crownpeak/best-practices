@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Third Party Integration Guides](README.md)
-  * [Fredhopper Product Discovery Shopify App](fhr-shopify-app/README.md)
+  * [Shopify Fredhopper Product Discovery App](fhr-shopify-app/README.md)
     * [User Guide](fhr-shopify-app/user-guide/README.md)
     * [JavaScript SDK](fhr-shopify-app/sdk/README.md)
   * [Salesforce Commerce Cloud Reference Architecture](fhr-salesforce-commerce-cloud/introduction/README.md)

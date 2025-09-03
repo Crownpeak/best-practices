@@ -15,7 +15,7 @@ layout:
     visible: true
 ---
 
-# Fredhopper Product Discovery Shopify App
+# Shopify Fredhopper Product Discovery App
 
 ### Introduction
 
