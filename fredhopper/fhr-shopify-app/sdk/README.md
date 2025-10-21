@@ -34,7 +34,7 @@ The SDK is automatically initialized when the script loads. Credentials are mana
 
 ```javascript
 // SDK is available globally
-const collectionResults = await fredhopper.queryCatalog({category: "catalog01_12345"});
+const collectionResults = await fredhopper.queryCatalog({category: "12345"});
 const searchResults= await fredhopper.queryCatalog({term: "shoes", view: "search"});
 ```
 
@@ -60,13 +60,7 @@ const results = await fredhopper.queryCatalog({
     brand: ["nike", "adidas"],
     price: "10<price<100",
   },
-  catalog: "catalog01",
-  locale: "en_GB",
-  category: "catalog01_12345",
-  facetMultiMap: {
-    brand: true, // Multi-select
-    price: false, // Single select
-  },
+  category: "12345",
   view: "search",
   term: "shoes",
 });
@@ -82,13 +76,7 @@ const results = await fredhopper.queryCatalog({
     size: ["8", "9", "10"],
     color: ["red"],
   },
-  catalog: "catalog01",
-  locale: "fr_FR",
-  category: "catalog01_789",
-  facetMultiMap: {
-    size: true,
-    color: false,
-  },
+  category: "789",
 });
 ```
 
@@ -109,18 +97,30 @@ const results = await fredhopper.queryCatalog({
 * `catalog` (string, optional): Catalog identifier. Default: `"catalog01"`
 * `locale` (string, optional): Locale in Fredhopper format (e.g., `"en_GB"`). Default: auto-detected with `utils.detectLocale()`
 * `category` (string, optional): Category identifier. Default: `''`
-* `facetMultiMap` (object, optional): Defines which facets allow multiple selections. Default: `{}`
-  * Format: `{ facetName: true/false }`
-  * `true` = multi-select, `false` = single-select
-* `view` (string, optional): Fredhopper view type. Default: `"lister"`.
+  * The category ID originates from Shopify's collection object using the Liquid variable `{{ collection.id }}` and is automatically available.
+* `view` (string, optional): Fredhopper view type. Default: `"lister"`
   * It is recommended to use `"search"` for search queries.
 * `term` (string, optional): Search term. Default: `''`
 
 **Returns:** `Promise<any>` - Query results from Fredhopper API
 
-**Important Note:** The Fredhopper API requires two key parameters:
+**Important Note:**
+
+The Fredhopper API requires two key parameters:
 - `fh_view`- Specifies Fredhopper view type. It defaults to `'lister'` and can be set via the `view` option.
 - `fh_location` - Automatically built from your catalog, locale, search term, category, and filters using the SDK's location builder.
+
+Following parameters are added automatically to the request payload based on the `options` provided:
+
+* `fh_location` - Built from `catalog`, `locale`, `term`, `category`, and `filters`
+* `fh_view` - Set from `view`
+* `fh_view_size` - Set from `limit`
+* `fh_start_index` - Calculated from `page` and `limit`
+* `fh_sort_by` - Omitted for `sort=relevance` which is the default
+* `fh_session` - Default: `"shopify-app"`
+* `market` - Default: auto-detected from locale 
+* `credentials` - Hash containing API credentials
+* `fh_session_id` - Unique session identifier for tracking. Omitted if it does not exist.
 
 ### Raw API Access
 
@@ -154,6 +154,7 @@ const results = await fredhopper.rawRequest({
 * `fh_start_index` (number): Starting index for pagination
 * `fh_sort_by` (string): Sort field
 * `fh_session` (string): Session identifier
+* `fh_session_id` (string): Unique session ID 
 * `market` (string): Market code
 
 **Returns:** `Promise<any>` - Raw API response
@@ -390,18 +391,13 @@ async function loadFilteredCollection(categoryId, userFilters = {}) {
     limit: 36,
     sort: "price-asc",
     filters: userFilters,
-    facetMultiMap: {
-      brand: true,
-      size: true,
-      color: true
-    }
   });
 
   return results;
 }
 
 // Usage
-const products = await loadFilteredCollection("catalog01_12345", {
+const products = await loadFilteredCollection("12345", {
   brand: ["nike", "adidas"],
   size: ["8", "9", "10"],
   price: "20<price<150"
@@ -452,7 +448,6 @@ Use `utils.detectLocale()` to automatically handle different markets:
 ```javascript
 const results = await fredhopper.queryCatalog({
   locale: fredhopper.utils.detectLocale(), // Auto-detects from Shopify
-  catalog: "catalog01",
   term: "shoes",
   view: "search",
 });
