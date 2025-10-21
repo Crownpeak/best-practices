@@ -34,75 +34,25 @@ The SDK is automatically initialized when the script loads. Credentials are mana
 
 ```javascript
 // SDK is available globally
-const results = await fredhopper.getSearch("shoes");
-const collection = await fredhopper.getCollection("sneakers");
+const collectionResults = await fredhopper.queryCatalog({category: "12345"});
+const searchResults= await fredhopper.queryCatalog({term: "shoes", view: "search"});
 ```
 
 ### Development Mode
 
-Add `?fhr_debug=true` to enable detailed console logging.
+Add `?fhr_debug=true` to your URL to enable detailed console logging in the browser console.
 
 ## API Reference
 
-### Core Methods
+### Core Method
 
-#### `getSearch(query, options, location)`
+#### `queryCatalog(options)`
 
-Retrieve search results from Fredhopper.
-
-```javascript
-const results = await fredhopper.getSearch(
-  "running shoes",
-  {
-    page: 1,
-    limit: 24,
-    sort: "price-asc",
-  },
-  "fh_location=//catalog01/en_GB"
-);
-```
-
-**Parameters:**
-
-* `query` (string): Search term
-* `options` (object, optional): Search options
-  * `page` (number): Page number (default: 1)
-  * `limit` (number): Results per page (default: 20)
-  * `sort` (string): Sort option ('relevance', 'price-asc', 'price-desc')
-* `location` (string, optional): Fredhopper location string
-
-#### `getCollection(handle, options, location)`
-
-Retrieve collection/category results from Fredhopper.
+Stateless method to query a catalog with advanced options in Fredhopper.
 
 ```javascript
-const results = await fredhopper.getCollection(
-  "sneakers",
-  {
-    page: 1,
-    limit: 24,
-    sort: "relevance",
-  },
-  "fh_location=//catalog01/en_GB/categories<{catalog01_123456}"
-);
-```
-
-**Parameters:**
-
-* `handle` (string): Collection handle
-* `options` (object, optional): Collection options (same as getSearch)
-* `location` (string, optional): Fredhopper location string
-
-### Stateless Methods (Recommended)
-
-For cleaner, more explicit code, use the stateless methods that accept all parameters:
-
-#### `getSearchWithOptions(query, options)`
-
-Stateless search method with explicit parameters.
-
-```javascript
-const results = await fredhopper.getSearchWithOptions("shoes", {
+// Example: Search for products with filters and sorting
+const results = await fredhopper.queryCatalog({
   page: 1,
   limit: 24,
   sort: "price-asc",
@@ -110,22 +60,15 @@ const results = await fredhopper.getSearchWithOptions("shoes", {
     brand: ["nike", "adidas"],
     price: "10<price<100",
   },
-  catalog: "catalog01",
-  locale: "en_GB",
-  category: "catalog01_12345",
-  facetMultiMap: {
-    brand: true, // Multi-select
-    price: false, // Single select
-  },
+  category: "12345",
+  view: "search",
+  term: "shoes",
 });
 ```
 
-#### `getCollectionWithOptions(handle, options)`
-
-Stateless collection method with explicit parameters.
-
 ```javascript
-const results = await fredhopper.getCollectionWithOptions("sneakers", {
+// Example: Collection query with filters and sorting
+const results = await fredhopper.queryCatalog({
   page: 1,
   limit: 36,
   sort: "price-desc",
@@ -133,23 +76,57 @@ const results = await fredhopper.getCollectionWithOptions("sneakers", {
     size: ["8", "9", "10"],
     color: ["red"],
   },
-  catalog: "catalog01",
-  locale: "fr_FR",
-  category: "catalog01_789",
-  facetMultiMap: {
-    size: true,
-    color: false,
-  },
+  category: "789",
 });
 ```
 
-### Raw API Access
+**Parameters:**
 
-For maximum control over Fredhopper parameters:
+* `options` (object, optional): Configuration object
+
+**Options Properties:**
+
+* `page` (number, optional): Page number. Default: `1`
+* `limit` (number, optional): Results per page. Default: `24`
+* `sort` (string, optional): Sort option. Default: `"relevance"`
+  * Available values: `"relevance"`, `"price-asc"`, `"price-desc"`, or custom sort field
+* `filters` (object, optional): Filter object. Default: `{}`
+  * Single value: `{ brand: "nike" }` or `{ brand: ["nike"] }`
+  * Multiple values: `{ brand: ["nike", "adidas"] }`
+  * Range values: `{ price: "10<price<100" }`
+* `catalog` (string, optional): Catalog identifier. Default: `"catalog01"`
+* `locale` (string, optional): Locale in Fredhopper format (e.g., `"en_GB"`). Default: auto-detected with `utils.detectLocale()`
+* `category` (string, optional): Category identifier. Default: `''`
+  * The category ID originates from Shopify's collection object using the Liquid variable `{{ collection.id }}` and is automatically available.
+* `view` (string, optional): Fredhopper view type. Default: `"lister"`
+  * It is recommended to use `"search"` for search queries.
+* `term` (string, optional): Search term. Default: `''`
+
+**Returns:** `Promise<any>` - Query results from Fredhopper API
+
+**Important Note:**
+
+The Fredhopper API requires two key parameters:
+- `fh_view`- Specifies Fredhopper view type. It defaults to `'lister'` and can be set via the `view` option.
+- `fh_location` - Automatically built from your catalog, locale, search term, category, and filters using the SDK's location builder.
+
+Following parameters are added automatically to the request payload based on the `options` provided:
+
+* `fh_location` - Built from `catalog`, `locale`, `term`, `category`, and `filters`
+* `fh_view` - Set from `view`
+* `fh_view_size` - Set from `limit`
+* `fh_start_index` - Calculated from `page` and `limit`
+* `fh_sort_by` - Omitted for `sort=relevance` which is the default
+* `fh_session` - Default: `"shopify-app"`
+* `market` - Default: auto-detected from locale 
+* `credentials` - Hash containing API credentials
+* `fh_session_id` - Unique session identifier for tracking. Omitted if it does not exist.
+
+### Raw API Access
 
 #### `rawRequest(params)`
 
-Direct API request with custom Fredhopper parameters.
+Direct API request with full control over all Fredhopper parameters:
 
 ```javascript
 const results = await fredhopper.rawRequest({
@@ -158,11 +135,31 @@ const results = await fredhopper.rawRequest({
   fh_view_size: 48,
   fh_start_index: 0,
   fh_sort_by: "-price",
+  market: "GB",
   custom_param: "value",
 });
 ```
+**Parameters:**
 
-**Note:** Credentials are automatically added to all requests.
+* `params` (object, required): Direct Fredhopper API parameters
+
+**Required Parameters:**
+
+* `fh_location` (string): Fredhopper location string
+* `fh_view` (string): Fredhopper view type
+
+**Optional Parameters:**
+
+* `fh_view_size` (number): Number of results
+* `fh_start_index` (number): Starting index for pagination
+* `fh_sort_by` (string): Sort field
+* `fh_session` (string): Session identifier
+* `fh_session_id` (string): Unique session ID 
+* `market` (string): Market code
+
+**Returns:** `Promise<any>` - Raw API response
+
+**Important Note:** Credentials are automatically added to all requests.
 
 ## Utilities
 
@@ -182,55 +179,107 @@ const location = fredhopper.utils.buildLocation({
     brand: ["nike"],
     price: "50<price<200",
   },
-  pageType: "search", // or 'collection'
   facetMultiMap: {
     brand: true,
   },
+  view: "search",
 });
 
 // Result: "//catalog01/en_GB/categories<{catalog01_12345}/$s=shoes/brand>{nike}/50<price<200"
 ```
+**Parameters:**
+
+`options` (object, optional): Location building configuration
+
+**Options Properties:**
+
+* `catalog` (string, optional): Catalog identifier. Default: `"catalog01"`
+* `locale` (string, optional): Locale. Default: auto-detected using `utils.detectLocale()`
+* `searchTerm` (string, optional): Search term. Default: `''`
+* `category` (string, optional): Category identifier. Default: `''`
+* `filters` (object, optional): Filter object. Default: `{}`
+* `facetMultiMap` (object, optional): Defines which facets allow multiple selections. Default: `{}`
+* Format: `{ facetName: true/false }`
+* `true` = multi-select, `false` = single-select
+* `view` (string, optional): Fredhopper view type. Default: `"lister"`
+
+**Returns:** `string` - Formatted Fredhopper location string
 
 ### Encoding Utilities
 
 #### `utils.encodeFHUnicodeValue(value)`
 
-Encode values for Fredhopper Unicode format.
+Encode filter values for Fredhopper Unicode format.
 
 ```javascript
 const encoded = fredhopper.utils.encodeFHUnicodeValue("special chars!");
+
 // Result: "special\\u0020chars\\u0021"
 ```
 
+**Parameters:**
+
+* `value` (string, required): Value to encode
+
+**Returns:** `string` - Encoded value
+
 #### `utils.formatSearchTerm(term)`
 
-Format search terms for Fredhopper.
+Format search terms for Fredhopper by converting special characters to Unicode escape sequences.
 
 ```javascript
 const formatted = fredhopper.utils.formatSearchTerm("running shoes");
+
 // Result: "running\\u0020shoes"
 ```
+
+**Parameters:**
+
+* `term` (string, required): Search term to format
+* `view` (string, optional): Fredhopper view type. Default: `"lister"`
+
+**Returns:** `string` - Formatted search term
 
 ### Other Utilities
 
 #### `utils.debounce(func, delay)`
 
-Debounce function for search inputs.
+Debounce function for optimizing search inputs and preventing excessive API calls.
 
 ```javascript
-const debouncedSearch = fredhopper.utils.debounce((term) => {
-  fredhopper.getSearch(term);
+const debouncedSearch = fredhopper.utils.debounce(async (term) => {
+  if (term.length > 2) {
+    const results = await fredhopper.queryCatalog({
+      page: 1,
+      limit: 24,
+      term: term,
+      view: "search",
+    });
+    updateSearchResults(results);
+  }
 }, 300);
 ```
 
+**Parameters:**
+
+* `func` (function, required): Function to debounce
+* `wait` (number, required): Delay in milliseconds
+
+**Returns:** `function` - Debounced function
+
 #### `utils.detectLocale()`
 
-Auto-detect Shopify locale and convert to Fredhopper format.
+Auto-detect Shopify locale and convert it to Fredhopper format.
 
 ```javascript
 const locale = fredhopper.utils.detectLocale();
+
 // Result: "en_GB" (based on window.Shopify.locale/country)
 ```
+
+**Parameters**: None
+
+**Returns:** `string` - Fredhopper locale string
 
 #### `utils.formatPrice(price, currency)`
 
@@ -238,12 +287,22 @@ Format prices using Intl.NumberFormat.
 
 ```javascript
 const formatted = fredhopper.utils.formatPrice(29.99, "USD");
+
 // Result: "$29.99"
 ```
+
+**Parameters:**
+
+* `price` (number, optional): Price to format. Default: `0`
+* `currency` (string, optional): Currency code. Default: `"USD"`
+
+**Returns:** `string - Formatted price string
 
 ## Configuration & Initialization
 
 ### Basic Initialization
+
+Initialize or reconfigure the SDK. The SDK auto-initializes on load, but you can reconfigure it.
 
 ```javascript
 await fredhopper.init({
@@ -251,19 +310,35 @@ await fredhopper.init({
   development: false,
 });
 ```
+**Parameters:**
+
+* `options` (object, optional): Configuration object
+
+**Options Properties:**
+
+* `debug` (boolean, optional): Enable debug logging
+* `development` (boolean, optional): Enable development mode
+
+**Returns:** `Promise<void>`
 
 ### Event Handling
 
 #### `onReady(callback)`
 
-Execute callback when SDK is initialized.
+Execute callback when SDK is fully initialized.
 
 ```javascript
 fredhopper.onReady(() => {
   console.log("SDK ready!");
+  
   // Perform initial search/collection load
 });
 ```
+**Parameters:**
+
+* callback (function, required): Function to execute when ready
+
+**Returns:** `void`
 
 #### Event System
 
@@ -277,16 +352,26 @@ fredhopper.events.on("filtersChanged", (filters) => {
 fredhopper.events.emit("customEvent", data);
 ```
 
+**Parameters:**
+
+* `event` (string, required): Event name
+* `callback` (function, required): Event handler function
+
+**Returns:** `void`
+
 ## Examples
 
 ### Basic Product Search
 
 ```javascript
-async function searchProducts(term) {
+async function searchProducts(term, view) {
   try {
-    const results = await fredhopper.getSearch(term, {
+    const results = await fredhopper.queryCatalog({
       limit: 24,
       sort: "relevance",
+      locale: fredhopper.utils.detectLocale(),
+      term: term,
+      view: view || "search",
     });
 
     displayProducts(results);
@@ -299,53 +384,24 @@ async function searchProducts(term) {
 ### Advanced Collection with Filters
 
 ```javascript
-async function loadCollection(handle, userFilters = {}) {
-  const results = await fredhopper.getCollectionWithOptions(handle, {
+async function loadFilteredCollection(categoryId, userFilters = {}) {
+  const results = await fredhopper.queryCatalog({
+    category: categoryId,
     page: 1,
     limit: 36,
+    sort: "price-asc",
     filters: userFilters,
-    catalog: "catalog01",
-    locale: fredhopper.utils.detectLocale(),
-    facetMultiMap: {
-      brand: true,
-      size: true,
-      color: false,
-    },
   });
 
   return results;
 }
 
 // Usage
-const products = await loadCollection("sneakers", {
+const products = await loadFilteredCollection("12345", {
   brand: ["nike", "adidas"],
-  size: ["8", "9"],
+  size: ["8", "9", "10"],
+  price: "20<price<150"
 });
-```
-
-### Custom Location Building
-
-```javascript
-function buildCustomLocation(searchTerm, filters) {
-  return fredhopper.utils.buildLocation({
-    catalog: "catalog01",
-    locale: "en_GB",
-    searchTerm: searchTerm,
-    filters: filters,
-    pageType: "search",
-    facetMultiMap: {
-      brand: true,
-      category: false,
-    },
-  });
-}
-
-const location = buildCustomLocation("shoes", {
-  brand: ["nike"],
-  price: "20<price<100",
-});
-
-const results = await fredhopper.getSearch("shoes", {}, location);
 ```
 
 ### Debounced Search Input
@@ -354,7 +410,7 @@ const results = await fredhopper.getSearch("shoes", {}, location);
 const searchInput = document.getElementById("search");
 const debouncedSearch = fredhopper.utils.debounce(async (term) => {
   if (term.length > 2) {
-    const results = await fredhopper.getSearch(term);
+    const results = await fredhopper.queryCatalog({limit: 10, term: term, view: "search"});
     updateSearchResults(results);
   }
 }, 300);
@@ -364,51 +420,13 @@ searchInput.addEventListener("input", (e) => {
 });
 ```
 
-## Migration Guide
-
-### From Legacy Methods
-
-If you're using deprecated methods, here's how to migrate:
-
-#### ❌ Old Way
-
-```javascript
-// Deprecated - uses internal state
-fredhopper.setFilters({ brand: "nike" });
-const results = await fredhopper.search("shoes");
-const state = fredhopper.getState(); // Deprecated
-```
-
-#### ✅ New Way
-
-```javascript
-// Recommended - stateless and explicit
-const results = await fredhopper.getSearchWithOptions("shoes", {
-  filters: { brand: ["nike"] },
-  page: 1,
-  limit: 24,
-});
-```
-
-#### ❌ Old Method Names
-
-```javascript
-await fredhopper.searchWithOptions(term, options); // Deprecated
-```
-
-#### ✅ New Method Names
-
-```javascript
-await fredhopper.getSearchWithOptions(term, options); // Consistent naming
-```
-
 ## Error Handling
 
-The SDK throws errors for failed requests. Always wrap calls in try-catch:
+The SDK throws errors for failed requests. Always wrap API calls in try-catch blocks:
 
 ```javascript
 try {
-  const results = await fredhopper.getSearch("shoes");
+  const results = await fredhopper.queryCatalog({term: "shoes", view: "search"});
   // Handle successful response
 } catch (error) {
   if (error.message.includes("API request failed")) {
@@ -423,18 +441,15 @@ try {
 
 ## Best Practices
 
-### 1. Use Stateless Methods
-
-Prefer `getSearchWithOptions()` and `getCollectionWithOptions()` for cleaner, more predictable code.
-
-### 2. Handle Localization
+### 1. Handle Localization
 
 Use `utils.detectLocale()` to automatically handle different markets:
 
 ```javascript
-const results = await fredhopper.getSearchWithOptions("shoes", {
+const results = await fredhopper.queryCatalog({
   locale: fredhopper.utils.detectLocale(), // Auto-detects from Shopify
-  catalog: "catalog01",
+  term: "shoes",
+  view: "search",
 });
 ```
 
@@ -454,6 +469,7 @@ For complex filtering scenarios, use the location builder utility:
 const location = fredhopper.utils.buildLocation({
   // ... complex filter logic
 });
+
 const results = await fredhopper.rawRequest({
   fh_location: location,
   fh_view: "search",
@@ -465,12 +481,14 @@ const results = await fredhopper.rawRequest({
 Track loading states in your UI:
 
 ```javascript
-setLoading(true);
+// Example: Using CSS classes for loading state
+const container = document.querySelector('.products-container');
+container.classList.add('is-loading');
 try {
-  const results = await fredhopper.getSearch(term);
+  const results = await fredhopper.queryCatalog({ term: "shoes", view: "search" });
   displayResults(results);
 } finally {
-  setLoading(false);
+  container.classList.remove('is-loading');
 }
 ```
 
@@ -499,23 +517,8 @@ While the SDK is written in JavaScript, it includes JSDoc type annotations for b
 declare global {
   interface Window {
     fredhopper: {
-      getSearch(
-        query: string,
-        options?: SearchOptions,
-        location?: string
-      ): Promise<any>;
-      getCollection(
-        handle: string,
-        options?: CollectionOptions,
-        location?: string
-      ): Promise<any>;
-      getSearchWithOptions(
-        query: string,
+      queryCatalog(
         options: AdvancedSearchOptions
-      ): Promise<any>;
-      getCollectionWithOptions(
-        handle: string,
-        options: AdvancedCollectionOptions
       ): Promise<any>;
       rawRequest(params: Record<string, any>): Promise<any>;
       utils: {
