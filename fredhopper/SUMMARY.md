@@ -4,7 +4,7 @@
   * [Shopify Fredhopper Product Discovery App](fhr-shopify-app/README.md)
     * [User Guide](fhr-shopify-app/user-guide/README.md)
     * [JavaScript SDK](fhr-shopify-app/sdk/README.md)
-    * [Web-Pixel Intergration](fhr-shopify-app/web-pixel/README.md)
+    * [Web-Pixel Integration](fhr-shopify-app/web-pixel/README.md)
   * [Salesforce Commerce Cloud Reference Architecture](fhr-salesforce-commerce-cloud/introduction/README.md)
     * [Architectural Principles](fhr-salesforce-commerce-cloud/architectural-principles/README.md)
     * [Data Transformation and Ingestion](fhr-salesforce-commerce-cloud/data-transformation-and-ingestion/README.md)
