@@ -79,6 +79,7 @@ If you have created a new metafield or variant option and it is not being displa
 > - Company
 > - Collection
 > - Page
+> - Product
 > - Product Variant
 > - MediaImage
 
