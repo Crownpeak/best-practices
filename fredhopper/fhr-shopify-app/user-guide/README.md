@@ -36,6 +36,8 @@ The Fredhopper tracking pixel extension allows click data to be sent to Fredhopp
 
 To install the pixel, click the Install Pixel Extention button on the Settings page of the app.
 
+For more information on the Pixel Extention, please view the [Web-Pixel Integration](../web-pixel/README.md)
+
 ![Shopify App Settings Page](../../../images/shopify/settings.png)
 
 You can remove the Web Pixel at anytime by clicking the Remove Pixel Extension button.
@@ -58,7 +60,7 @@ The schema manager displays the data fields within Shopify and allows them to be
 
 ![Shopify App Schema Manager Page](../../../images/shopify/schema1.png)
 
-In addition to the basic product fields, the app also supports most metafield formats within Shopify. As well as syncing basic type metafields, the app processes and transforms the data linked to reference type metafields, converting them into formats Fredhopper can use and making them usable for creating facets and result modifications in Fredhopper.
+In addition to the basic product fields, which are fixed within the app, the app also supports most metafield formats within Shopify. As well as syncing basic type metafields, the app processes and transforms the data linked to certain reference type metafields and metabojects, converting them into formats Fredhopper can use and making them usable for creating facets and result modifications in Fredhopper.
 
 Shopify supports up to three variant option fields per product (e.g., size, color, material). These are text-based and unique to each product, even when option names overlap across products. To make option data usable in Fredhopper, the app creates dedicated fields in Fredhopper for every unique option across all of Shopify's variant data. This allows consistent filtering (using facets and result modifications) across all product variants that share the same option name regardless of how the data is stored. For Example, if any product variant has an option with the text *Size*, the app will create an option_size field in the Schema. When the product data is synced, any variant with an option named *Size* will have it's value (e.g. S, M, L, etc) asigned to this field in Fredhopper which could be then used to create a Size facet. Note that these fields are auto-generated during schema creation and updates. They do not appear in the Schema Manager and cannot be manually configured.
 
@@ -70,17 +72,15 @@ Once the schema has been created, you can use the [Catalog Manager](#using-the-c
 
 If you have created a new metafield or variant option and it is not being displayed within the Schema Manager or in Fredhopper, please use the Create Staging Catalog option within the [Batch Manager](#using-the-batch-manager) to run a sync to ensure that the app has the latest set of data from Shopify. This will sync the data ready for sending to Fredhopper but not activate the catalog inside Fredhopper. See the [Batch Manager](#using-the-batch-manager) section for more details. Once this process is complete, the new fields will show in the Schema Manager and you can create a new schema to tell Fredhopper to use these fields. Note that the data for these fields will not be synced until a new Schema is created and another data sync has been run.
 
-> Note:
+> Metafields and metaobjects:
 >
-> Not all reference type metafields can be transformed due to their unknown structures. These may appear as raw data in Fredhopper. Such fields can be excluded from a schema in Schema Manager.
+> Not all reference type metafields or metaobjects can be transformed due to their unknown structures. Certain reference type metafields are pre-processed where as others return the id of the object being referenced to. Where possoble, metaobjects are sent to Fredhopper as a collection of fields in JSON format. Although these may appear as raw data in Fredhopper, it can be useful for relayinng to the frontend for processing. Such fields can be excluded from a schema in Schema Manager if needed.
 >
 > The following metafield types are also automatically exclude:
 > - Customer
 > - Company
 > - Collection
 > - Page
-> - Product
-> - Product Variant
 > - MediaImage
 
 ## Using the Catalog Manager

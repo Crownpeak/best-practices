@@ -44,9 +44,9 @@ Add `?fhr_debug=true` to your URL to enable detailed console logging in the brow
 
 ## API Reference
 
-### Core Method
+### Core Methods
 
-#### `queryCatalog(options)`
+### `queryCatalog(options)`
 
 Stateless method to query a catalog with advanced options in Fredhopper.
 
@@ -101,6 +101,8 @@ const results = await fredhopper.queryCatalog({
 * `view` (string, optional): Fredhopper view type. Default: `"lister"`
   * It is recommended to use `"search"` for search queries.
 * `term` (string, optional): Search term. Default: `''`
+* `suppress` (string, optional): Default: ''
+  * Fredhopper suppress parameter to suppress parts of the response (e.g., 'facets')
 
 **Returns:** `Promise<any>` - Query results from Fredhopper API
 
@@ -117,6 +119,79 @@ Following parameters are added automatically to the request payload based on the
 * `fh_view_size` - Set from `limit`
 * `fh_start_index` - Calculated from `page` and `limit`
 * `fh_sort_by` - Omitted for `sort=relevance` which is the default
+* `fh_suppress` - Set from `suppress`
+* `fh_session` - Default: `"shopify-app"`
+* `market` - Default: auto-detected from locale 
+* `credentials` - Hash containing API credentials
+* `fh_session_id` - Unique session identifier for tracking. Omitted if it does not exist.
+
+### `queryProduct(options)`
+
+Stateless method to query a product with advanced options in Fredhopper.
+
+```javascript
+// Example: a product
+const results = await fredhopper.queryProduct({
+  id: "0123456789"
+});
+```
+
+```javascript
+// Example: a product and variant
+const results = await fredhopper.queryProduct({
+  id: "0123456789",
+  id2: "9876543210"
+});
+```
+
+```javascript
+// Example: product query with filters
+const results = await fredhopper.queryProduct({
+  id: "0123456789",
+  filters: {
+    size: ["8", "9", "10"],
+    color: ["red"],
+  },
+  suppress: "facets"
+});
+```
+
+**Parameters:**
+
+* `options` (object, optional): Configuration object
+
+**Options Properties:**
+* `id` (string): product id
+* `id2` (string): variant id
+* `filters` (object, optional): Filter object. Default: `{}`
+  * Single value: `{ brand: "nike" }` or `{ brand: ["nike"] }`
+  * Multiple values: `{ brand: ["nike", "adidas"] }`
+  * Range values: `{ price: "10<price<100" }`
+* `catalog` (string, optional): Catalog identifier. Default: `"catalog01"`
+* `locale` (string, optional): Locale in Fredhopper format (e.g., `"en_GB"`). Default: auto-detected with `utils.detectLocale()`
+* `category` (string, optional): Category identifier. Default: `''`
+  * The category ID originates from Shopify's collection object using the Liquid variable `{{ collection.id }}` and is automatically available.
+* `view` (string, optional): Fredhopper view type. Default: `"detail"`
+* `term` (string, optional): Search term. Default: `''`
+* `suppress` (string, optional): Default: ''
+  * Fredhopper suppress parameter to suppress parts of the response (e.g., 'facets')
+
+
+**Returns:** `Promise<any>` - Query results from Fredhopper API
+
+**Important Note:**
+
+The Fredhopper API requires two key parameters:
+- `fh_view`- Specifies Fredhopper view type. It defaults to `'detail'` and can be set via the `view` option.
+- `fh_location` - Automatically built from your catalog, locale, search term, category, and filters using the SDK's location builder.
+
+Following parameters are added automatically to the request payload based on the `options` provided:
+
+* `fh_location` - Built from `catalog`, `locale`, `term`, `category`, and `filters`
+* `fh_secondid` - Set from `id`
+* `fh_secondid2` - Set from `id2`
+* `fh_view` - Set from `view`
+* `fh_suppress` - Set from `suppress`
 * `fh_session` - Default: `"shopify-app"`
 * `market` - Default: auto-detected from locale 
 * `credentials` - Hash containing API credentials
@@ -124,7 +199,7 @@ Following parameters are added automatically to the request payload based on the
 
 ### Raw API Access
 
-#### `rawRequest(params)`
+### `rawRequest(params)`
 
 Direct API request with full control over all Fredhopper parameters:
 
