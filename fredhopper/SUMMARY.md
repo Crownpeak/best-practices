@@ -11,3 +11,8 @@
     * [Storefront Integration](fhr-salesforce-commerce-cloud/storefront-integration/README.md)
     * [Deployment and Operational Considerations](fhr-salesforce-commerce-cloud/deployment-and-operational-considerations/README.md)
     * [Troubleshooting and FAQs](fhr-salesforce-commerce-cloud/troubleshooting-and-faqs/README.md)
+  * [n8n Workflow: SFCC to Fredhopper](fhr-n8n-sfcc-workflow/README.md)
+    * [Configuration](fhr-n8n-sfcc-workflow/configuration/README.md)
+    * [SFCC Data Extraction](fhr-n8n-sfcc-workflow/sfcc-data-extraction/README.md)
+    * [Fredhopper Data Ingestion](fhr-n8n-sfcc-workflow/fredhopper-data-ingestion/README.md)
+    * [Troubleshooting](fhr-n8n-sfcc-workflow/troubleshooting/README.md)
