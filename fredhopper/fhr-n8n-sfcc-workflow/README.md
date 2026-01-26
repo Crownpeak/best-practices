@@ -140,17 +140,4 @@ This guide is organized into the following chapters:
 * **[Fredhopper Data Ingestion](fredhopper-data-ingestion/README.md)** - How data is transformed and loaded into Fredhopper
 * **[Troubleshooting](troubleshooting/README.md)** - Common issues and solutions
 
-## SFCC API Endpoints Used
 
-This workflow uses the following Salesforce Commerce Cloud OCAPI endpoints:
-
-| Endpoint | API | Purpose |
-|----------|-----|---------|
-| `/dw/oauth2/access_token` | Account Manager | OAuth2 authentication |
-| `/dw/data/v{version}/catalogs/{catalog}/categories` | Data API | Fetch category list |
-| `/dw/data/v{version}/system_object_definitions/Product/attribute_definition_search` | Data API | Fetch product attribute definitions |
-| `/dw/shop/v{version}/categories/{id}` | Shop API | Fetch category details |
-| `/dw/shop/v{version}/product_search` | Shop API | Search for products |
-| `/dw/shop/v{version}/products/{id}` | Shop API | Fetch product/variant details |
-
-For complete API documentation, see the [SFCC OCAPI Reference](https://developer.salesforce.com/docs/commerce/b2c-commerce/references/b2c-commerce-ocapi/b2c-api-doc.html).

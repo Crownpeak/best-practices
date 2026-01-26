@@ -554,3 +554,19 @@ Common SFCC API errors and solutions:
 | `404` | Not Found | Check catalog/site/product IDs |
 | `429` | Rate Limited | Increase request intervals |
 | `500` | Server Error | Retry or contact SFCC support |
+
+## API Endpoints Reference
+
+This workflow uses the following Salesforce Commerce Cloud OCAPI endpoints:
+
+| Endpoint | API | Purpose |
+|----------|-----|---------|
+| `/dw/oauth2/access_token` | Account Manager | OAuth2 authentication |
+| `/dw/data/v{version}/catalogs/{catalog}/categories` | Data API | Fetch category list |
+| `/dw/data/v{version}/system_object_definitions/Product/attribute_definition_search` | Data API | Fetch product attribute definitions |
+| `/dw/shop/v{version}/categories/{id}` | Shop API | Fetch category details |
+| `/dw/shop/v{version}/product_search` | Shop API | Search for products |
+| `/dw/shop/v{version}/products/{id}` | Shop API | Fetch product/variant details |
+
+For complete API documentation, see the [SFCC OCAPI Reference](https://developer.salesforce.com/docs/commerce/b2c-commerce/references/b2c-commerce-ocapi/b2c-api-doc.html).
+
