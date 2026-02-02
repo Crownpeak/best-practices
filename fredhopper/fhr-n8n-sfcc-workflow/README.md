@@ -20,7 +20,7 @@ layout:
 
 ## Introduction
 
-This guide provides comprehensive documentation for the **"Populate Fredhopper with products from Salesforce Commerce Cloud"** n8n workflow. This workflow automates the complete process of extracting product data from Salesforce Commerce Cloud (SFCC) and ingesting it into Fredhopper Product Discovery.
+This guide provides comprehensive documentation for the **["Fredhopper n8n Workflow for Salesforce Commerce Cloud"](https://github.com/Crownpeak/n8n-workflow-fredhopper-sfcc)** n8n workflow. This workflow automates the complete process of extracting product data from Salesforce Commerce Cloud (SFCC) and ingesting it into Fredhopper Product Discovery.
 
 ### Purpose of this Guide
 
