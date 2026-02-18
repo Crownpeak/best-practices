@@ -28,9 +28,10 @@ It enables faster time-to-market with a ready-made connector, simplified catalog
 #### Data Integration
 
 * Full & incremental product syncs from Shopify to Fredhopper
-* Bulk ingestion via Shopify Bulk Query API, broken into batches for reliability.
-* Product update streaming using Shopify webhooks
-* Management of schema creation, catalog management, and batch ingestion through the app.
+* Queue-based bulk sync: all Shopify product IDs are written into a shared processing queue and streamed to an inactive Fredhopper catalog via a self-re-enqueueing worker, with automatic or manual catalog activation.
+* Queue-based streaming updates: Shopify webhook events (product create, update, delete) are added to the same processing queue and streamed to the active Fredhopper catalog in near real-time, with a catch-up mechanism that ensures no updates are lost during a running bulk sync.
+* Smart scheduling with ETA-based optimal start times, weekday selection, and configurable safety rules.
+* Management of schema creation, catalog management, and queued bulk sync through the app.
 
 #### Frontend Integration
 
