@@ -24,7 +24,7 @@ This document provides a deep technical overview of the Fredhopper Shopify App's
 
 ## 1. System Context
 
-The app sits between three systems: **Shopify** (source of truth for product data), the **Gadget platform** (runtime environment), and **Fredhopper/Crownpeak** (search & merchandising engine). All data flows are queue-based.
+The app sits between three systems: **Shopify** (source of truth for product data), the **Gadget platform** (runtime environment), and **Fredhopper** (search & merchandising engine). All data flows are queue-based.
 
 ```mermaid
 graph TB
@@ -1024,7 +1024,7 @@ erDiagram
 | `crownpeak-{tenantId}` | **50** | 15 min | `processQueuedBulk`, `processProductStreamingQueue` | Stream chunks to Fredhopper Items API |
 | `completed-queue-cleanup` | 1 | 10 min | `dispatchCompletedQueueCleanup` (cron 1h) | Mark deletable + physically delete old items |
 
-### Retry Configuration (for `crownpeak-{tenantId}` queue)
+### Retry Configuration (for `{tenantId}` queue)
 
 | Parameter | Default | Env Variable |
 |-----------|---------|-------------|

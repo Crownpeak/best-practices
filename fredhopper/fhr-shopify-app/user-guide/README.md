@@ -26,25 +26,25 @@ Click the install button and when prompted give the app the necessary permission
 
 The app is now installed and is ready to be configured.
 
-Contact to your CSM, Technical Consultant or onboarding team so they configure the app for you so it can communicate with your Fredhopper instance.
+Contact your CSM, Technical Consultant, or onboarding team so they can configure the app for you and ensure it can communicate with your Fredhopper instance.
 
 Once the app has been configured, you can start to use the features of the app.
 
 ### 1.1. Installing the Web Pixel
 
-The Fredhopper tracking pixel extension allows click data to be sent to Fredhopper’s tracker to power features such A/B testing, insights and AI scores.
+The Fredhopper tracking pixel extension allows click data to be sent to Fredhopper’s tracker to power features such as A/B testing, insights, and AI scores.
 
 To install the pixel, click the Install Pixel Extension button on the Settings page of the app.
 
 For more information on the Pixel Extension, please view the [Web-Pixel Integration](../web-pixel/README.md)
 
-You can remove the Web Pixel at anytime by clicking the Remove Pixel Extension button.
+You can remove the Web Pixel at any time by clicking the Remove Pixel Extension button.
 
 ### 1.2. Enabling the JavaScript SDK
 
 The [JavaScript SDK](../sdk/README.md) allows developers to integrate Fredhopper into your front-end themes and blocks. The SDK adds an object to the window that you can use to make calls to the Fredhopper Query API via the Shopify App Proxy, adding the necessary filters to each call, and receiving the results to render on the page.
 
-You can enable the SDK via the Settings page of the app by clicking on the Enable Fredhopper SDK button. Or by visiting theme editor within the Shopify Admin, selecting the App Embeds panel and toggling the Fredhopper SDK Loader.
+You can enable the SDK via the Settings page of the app by clicking the Enable Fredhopper SDK button, or by visiting the Theme Editor within Shopify Admin, selecting the App Embeds panel, and toggling the Fredhopper SDK Loader.
 
 ![Shopify App SDK Loader](../../../images/shopify/sdk.png)
 
@@ -69,7 +69,7 @@ The app sends data to Fredhopper using two mechanisms:
 1. Full Catalog Sync (Bulk Sync)
 Creates a new Catalog and generates the associated Schema and Category Tree, then ingests the complete product dataset.
 2. Incremental Updates (Streaming Queue)
-Continuously pushes product changes (creates, updates, deletes) to keep Fredhopper in sync with Shopify
+Continuously pushes product changes (creates, updates, deletes) to keep Fredhopper in sync with Shopify.
 
 ### 2.2. Bulk Sync
 
@@ -102,7 +102,7 @@ Updates are applied to the active Catalog using the Schema and Category Tree cur
 
 The Schema Manager allows you to create a schema that tells Fredhopper both the shape and type of data that the app will be sending from Shopify to Fredhopper. This allows Fredhopper to have an understanding of the data and defines how it can be used in Fredhopper when creating facets, rankings and other rules.
 
-The schema manager displays the data fields within Shopify and allows them to be mapped to types in Fredhopper. You can add, remove or adjust these.
+The Schema Manager displays the data fields within Shopify and allows them to be mapped to types in Fredhopper. You can add, remove, or adjust these.
 
 >Note on changing Fredhopper Data Types
 >
@@ -113,7 +113,7 @@ The schema manager displays the data fields within Shopify and allows them to be
 >Use this feature with caution. Selecting an incompatible Fredhopper type can cause sync failures. Before making changes, ensure that the Shopify data type is compatible with the chosen Fredhopper field type.
 >
 
-The main screen within the Schema Manager lists the schemas that have been created within the app. The most recent schema is listed at the top and the previous 20 schemas as listed in an expandable list. The schema that is currently been used by the active catalog is marked as *Active*.
+The main screen within the Schema Manager lists the schemas that have been created within the app. The most recent schema is listed at the top, and the previous 20 schemas are listed in an expandable list. The schema that is currently being used by the active catalog is marked as *Active*.
 
 The Schema editor window uses a three-panel layout to help you merge an existing Schema with the default Shopify field mapping, allowing you to create a new or updated Schema definition. This approach preserves any previous customisations, resolving any conflicts, whilst adding any new fields that may have been added to Shopify since the last schema was created.
 
@@ -159,84 +159,84 @@ Markets are also used to determine which price fields are generated to support m
 
 The three-panel Schema Editor allows you to create a new Schema based on an existing one, preserving previous customisations while enabling the addition of new metafields and providing the ability to revert previously edited fields back to their default mappings.
 
-The Schema Editor loads the active or selected Schema in the left hand panel and the default schema mapping in the right hand panel, with the center panel being the result of the merged changes that will become the new schema.
+The Schema Editor loads the active or selected Schema in the left-hand panel and the default schema mapping in the right-hand panel, with the center panel showing the result of the merged changes that will become the new schema.
 
 ![Schema Manager](../../../images/shopify/schema-manager.png)
 
-The top of the three-panel layout provides a list of field differences (1):
+**The top of the three-panel layout provides a list of field differences (1):**
 - Unchanged - fields that match the selected schema and the default mapping
 - Conflicts - fields that differ between the selected schema and the default mapping and need resolution
 - New - new fields found in Shopify but not currently in the selected schema
 - Removed - fields found in the selected schema but no longer in Shopify
 
-The top panel also shows the live data fetching for (2):
+**The top panel also shows the live data fetching for (2):**
 - Options - collects all the product variant options from Shopify (e.g. Size, Color, etc) for inclusion in the schema
 - Markets - loads the active Shopify Markets and their locales/countries
 - Prices - uses the country codes from Markets to generate the localised price fields (e.g price_GB, price_US, etc.)
 
-Auto-Merge (3):
+**Auto-Merge (3):**
 - One click to automatically resolve all safe changes. Accepts unchanged fields, adds new fields, and marks removed fields as skipped. Only true conflicts are left for manual resolution.
 
-Bulk Accept (4):
+**Bulk Accept (4):**
 - Accept All Left: Keep all values from your current active schema. 
 - Accept All Right: Accept all values from the freshly generated Shopify mapping. Useful when you trust one side entirely.
 
-Refresh from Shopify (5)
+**Refresh from Shopify (5):**
 - Manually re-fetch the fresh default mapping from your Shopify store. Scans current product data, metafields, and options to generate an up-to-date schema. Note: Options, markets, and prices are already fetched automatically when you enter the merge editor. Use this button if you've changed Shopify data mid-session.
 
-Filter the list by item status (6):
+**Filter the list by item status (6):**
 - All — Show everything
 - Conflicts — Only differing items e.g. the Fredhopper Type is different to the default mapping
 - New — Only items from Shopify not in your schema
 - Removed — Only items in your schema not in Shopify
 - Unchanged — Only identical items on both sides
 
-Search Fields (7);
+**Search Fields (7):**
 - Type to filter fields by name. Works across both the active schema and default mapping columns. Quickly find fields like 'price', 'title', or metafield names.
 
-The merge editor has three columns (8):
+**The merge editor has three columns (8):**
 - Active Schema (Left) — Your current saved schema
 - Merged Result (Center) — The final result that will be saved
-- Default Mapping (Right) — Freshly generated from Shopify  Resolve each row by choosing left, right, or editing the merge.
+- Default Mapping (Right) — Freshly generated from Shopify. Resolve each row by choosing left, right, or editing the merge.
 
-Entity Groups (9):
+**Entity Groups (9):**
 - Fields are grouped by entity type — Products and Variants. Each group shows field count, resolution progress, conflict/new/removed badges, and group-level bulk accept buttons.
 
-Merge Rows - Each row shows a single field across all three panels. The left border color indicates its status (10):
+**Merge Rows - Each row shows a single field across all three panels. The left border color indicates its status (10):**
 - 🟡 Amber = Conflict (values differ)
 - 🟢 Green = New (only in Shopify)
 - 🔵 Blue = Removed (only in your schema) 
 
-Merge Rows - Active Schema (Left) (11):
+**Merge Rows - Active Schema (Left) (11):**
 - Shows the field mapping from your current saved schema. You'll see the Shopify field name, its mapped Fredhopper attribute, and the attribute type. If empty, the field doesn't exist in your active schema.
 
-Merge Rows - Accept Left (12):
+**Merge Rows - Accept Left (12):**
 - Click the arrow button to accept the value from your active schema (left side) as the merged result. The center panel will update immediately.
 
-Merge Rows - Merged Result (Center) (13):
+**Merge Rows - Merged Result (Center) (13):**
 - The center panel shows the final merged value. You can:
 - ✏️ Edit — Change the Fredhopper attribute type
 - 🗑️ Skip — Exclude this field from the schema
-- ✅ Restore — Bring back a skipped field  "Pick a side" means this conflict still needs resolution.
+- ✅ Restore — Bring back a skipped field. "Pick a side" means this conflict still needs resolution.
 
-Merge Rows - Accept Right (14):
+**Merge Rows - Accept Right (14):**
 - Click the arrow button to accept the value from the default Shopify mapping (right side). Use this when the fresh mapping has the correct or updated value.
 
-Merge Rows - Default Mapping (Right) (15):
+**Merge Rows - Default Mapping (Right) (15):**
 - Shows the freshly generated field mapping from Shopify. This reflects the current state of your Shopify store's product data — including metafields, product options, localized price fields from active markets, and standard fields. Auto-refreshes when live data finishes loading.
 
-Included Fields (16):
+**Included Fields (16):**
 - These are required or system-managed fields that are always part of the schema and cannot be removed. They are resolved automatically. Click the > button to expand the list to view the fields.
 
-Progress & Save (17):
+**Progress & Save (17):**
 - The progress bar shows how many items are resolved out of the total. • All items must be resolved (or skipped) before you can save.
 - "Save Merged Schema" creates a new version and syncs it to Fredhopper
 - The save button glows when you're ready to save ✨
 
-Save Merged Schema (18):
+**Save Merged Schema (18):**
 - When all items are resolved, click this button to save the merged schema as a new version. It will be synced to Fredhopper automatically. The button is disabled until all data is loaded and all conflicts are resolved.
 
-Help (19):
+**Help (19):**
 - Click on the help button to view the guided tour.
 
 Once the schema has been created, you can use the [Sync Manager](#using-the-sync-manager) to run a full catalog sync using that schema or you can wait for the next [scheduled catalog sync](#setting-a-schedule) to happen.
