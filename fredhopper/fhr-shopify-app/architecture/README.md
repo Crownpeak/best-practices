@@ -1,21 +1,3 @@
----
-icon: sitemap
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
----
-
 # Architecture
 
 This document provides a deep technical overview of the Fredhopper Shopify App's architecture. Every diagram is derived directly from the source code and reflects exact action names, queue configurations, timeouts, and data flows.
