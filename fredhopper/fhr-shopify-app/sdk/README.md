@@ -103,6 +103,9 @@ const results = await fredhopper.queryCatalog({
 * `term` (string, optional): Search term. Default: `''`
 * `suppress` (string, optional): Default: ''
   * Fredhopper suppress parameter to suppress parts of the response (e.g., 'facets')
+* `additionalParams` (object, optional): Additional raw Fredhopper API parameters to pass through directly. Default: `{}`
+  * These are spread into the request before the standard parameters, so standard parameters take precedence.
+  * Useful for passing custom or experimental Fredhopper parameters not covered by the standard options.
 
 **Returns:** `Promise<any>` - Query results from Fredhopper API
 
@@ -175,7 +178,9 @@ const results = await fredhopper.queryProduct({
 * `term` (string, optional): Search term. Default: `''`
 * `suppress` (string, optional): Default: ''
   * Fredhopper suppress parameter to suppress parts of the response (e.g., 'facets')
-
+* `additionalParams` (object, optional): Additional raw Fredhopper API parameters to pass through directly. Default: `{}`
+  * These are spread into the request before the standard parameters, so standard parameters take precedence.
+  * Useful for passing custom or experimental Fredhopper parameters not covered by the standard options.
 
 **Returns:** `Promise<any>` - Query results from Fredhopper API
 
