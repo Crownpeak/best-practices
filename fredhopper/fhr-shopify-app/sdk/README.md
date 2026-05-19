@@ -60,6 +60,9 @@ const results = await fredhopper.queryCatalog({
     brand: ["nike", "adidas"],
     price: "10<price<100",
   },
+  facetMultiMap: {
+    brand: true,
+  },
   category: "12345",
   view: "search",
   term: "shoes",
@@ -76,7 +79,10 @@ const results = await fredhopper.queryCatalog({
     size: ["8", "9", "10"],
     color: ["red"],
   },
-  category: "789",
+  facetMultiMap: {
+    size: true,
+  },
+  category: "12345",
 });
 ```
 
@@ -94,6 +100,10 @@ const results = await fredhopper.queryCatalog({
   * Single value: `{ brand: "nike" }` or `{ brand: ["nike"] }`
   * Multiple values: `{ brand: ["nike", "adidas"] }`
   * Range values: `{ price: "10<price<100" }`
+* `facetMultiMap` (object, optional): Defines which facets should be encoded as multi-select in `fh_location`. Default: `{}`
+  * Format: `{ facetName: true/false }`
+  * Example: `{ brand: true }` encodes `brand>{nike;adidas}`
+  * If omitted, array filters are treated as single-select and only the first value is used
 * `catalog` (string, optional): Catalog identifier. Default: `"catalog01"`
 * `locale` (string, optional): Locale in Fredhopper format (e.g., `"en_GB"`). Default: auto-detected with `utils.detectLocale()`
 * `category` (string, optional): Category identifier. Default: `''`
@@ -115,6 +125,8 @@ The Fredhopper API requires two key parameters:
 - `fh_view`- Specifies Fredhopper view type. It defaults to `'lister'` and can be set via the `view` option.
 - `fh_location` - Automatically built from your catalog, locale, search term, category, and filters using the SDK's location builder.
 
+When using multi-value filters, you must set `facetMultiMap` for those facets. Otherwise, only the first value in each array is included.
+
 Following parameters are added automatically to the request payload based on the `options` provided:
 
 * `fh_location` - Built from `catalog`, `locale`, `term`, `category`, and `filters`
@@ -124,7 +136,7 @@ Following parameters are added automatically to the request payload based on the
 * `fh_sort_by` - Omitted for `sort=relevance` which is the default
 * `fh_suppress` - Set from `suppress`
 * `fh_session` - Default: `"shopify-app"`
-* `market` - Default: auto-detected from locale 
+* `market` - Default: auto-detected from `window.Shopify.country` (fallback: `"GB"`)
 * `credentials` - Hash containing API credentials
 * `fh_session_id` - Unique session identifier for tracking. Omitted if it does not exist.
 
@@ -155,6 +167,9 @@ const results = await fredhopper.queryProduct({
     size: ["8", "9", "10"],
     color: ["red"],
   },
+  facetMultiMap: {
+    size: true,
+  },
   suppress: "facets"
 });
 ```
@@ -170,6 +185,10 @@ const results = await fredhopper.queryProduct({
   * Single value: `{ brand: "nike" }` or `{ brand: ["nike"] }`
   * Multiple values: `{ brand: ["nike", "adidas"] }`
   * Range values: `{ price: "10<price<100" }`
+* `facetMultiMap` (object, optional): Defines which facets should be encoded as multi-select in `fh_location`. Default: `{}`
+  * Format: `{ facetName: true/false }`
+  * Example: `{ size: true }` encodes `size>{8;9;10}`
+  * If omitted, array filters are treated as single-select and only the first value is used
 * `catalog` (string, optional): Catalog identifier. Default: `"catalog01"`
 * `locale` (string, optional): Locale in Fredhopper format (e.g., `"en_GB"`). Default: auto-detected with `utils.detectLocale()`
 * `category` (string, optional): Category identifier. Default: `''`
@@ -190,6 +209,8 @@ The Fredhopper API requires two key parameters:
 - `fh_view`- Specifies Fredhopper view type. It defaults to `'detail'` and can be set via the `view` option.
 - `fh_location` - Automatically built from your catalog, locale, search term, category, and filters using the SDK's location builder.
 
+When using multi-value filters, you must set `facetMultiMap` for those facets. Otherwise, only the first value in each array is included.
+
 Following parameters are added automatically to the request payload based on the `options` provided:
 
 * `fh_location` - Built from `catalog`, `locale`, `term`, `category`, and `filters`
@@ -198,7 +219,7 @@ Following parameters are added automatically to the request payload based on the
 * `fh_view` - Set from `view`
 * `fh_suppress` - Set from `suppress`
 * `fh_session` - Default: `"shopify-app"`
-* `market` - Default: auto-detected from locale 
+* `market` - Default: auto-detected from `window.Shopify.country` (fallback: `"GB"`)
 * `credentials` - Hash containing API credentials
 * `fh_session_id` - Unique session identifier for tracking. Omitted if it does not exist.
 
@@ -239,7 +260,7 @@ const results = await fredhopper.rawRequest({
 
 **Returns:** `Promise<any>` - Raw API response
 
-**Important Note:** Credentials are automatically added to all requests.
+**Important Note:** Credentials are automatically added to all requests. If available in session storage, the SDK also adds `fh_session_id` (from `crownpeak_session_id`) and `fh_cluster_id` (from `crownpeak_cluster_data`).
 
 ## Utilities
 
@@ -316,7 +337,6 @@ const formatted = fredhopper.utils.formatSearchTerm("running shoes");
 **Parameters:**
 
 * `term` (string, required): Search term to format
-* `view` (string, optional): Fredhopper view type. Default: `"lister"`
 
 **Returns:** `string` - Formatted search term
 
@@ -481,6 +501,22 @@ const products = await loadFilteredCollection("12345", {
   brand: ["nike", "adidas"],
   size: ["8", "9", "10"],
   price: "20<price<150"
+});
+
+const productsWithMulti = await fredhopper.queryCatalog({
+  category: "12345",
+  page: 1,
+  limit: 36,
+  sort: "price-asc",
+  filters: {
+    brand: ["nike", "adidas"],
+    size: ["8", "9", "10"],
+    price: "20<price<150"
+  },
+  facetMultiMap: {
+    brand: true,
+    size: true
+  }
 });
 ```
 
