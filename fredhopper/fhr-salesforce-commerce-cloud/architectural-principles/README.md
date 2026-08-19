@@ -14,6 +14,10 @@ layout:
     visible: true
   metadata:
     visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
 ---
 
 # Architectural Principles
@@ -26,7 +30,7 @@ Understanding these principles will provide a solid foundation for the subsequen
 
 The following diagram shows a high-level typical architecture deployment of Fredhopper & SFCC. While each customer's implementation will vary, this can be used as a general starting point for implementation discussion.
 
-![Fredhopper + Salesforce Commerce Cloud (SFCC) High-Level Architecture Diagram](../../../images/diagrams/product-discovery_fhr-salesforce-commerce-cloud_architectural-principles_fhr-sfcc-high-level-architecure.jpg)
+![Fredhopper + Salesforce Commerce Cloud (SFCC) High-Level Architecture Diagram](../../.gitbook/assets/product-discovery_fhr-salesforce-commerce-cloud_architectural-principles_fhr-sfcc-high-level-architecure.jpg)
 
 #### Key Components and Interactions
 

@@ -1,4 +1,5 @@
 ---
+hidden: true
 layout:
   width: default
   title:
@@ -12,6 +13,10 @@ layout:
   pagination:
     visible: true
   metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
     visible: true
 ---
 
